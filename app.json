@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "HelloWorld",
-    "slug": "expo-template-default",
+    "name": "WasteBuster",
+    "slug": "wastebuster",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -13,13 +13,15 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.williamcagas.wastebuster"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.williamcagas.wastebuster"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +33,18 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "48c9ca60-25af-4388-a2c6-7ef2dd85f9a7"
+      }
+    },
+    "owner": "williamcagas",
+    "updates": {
+      "url": "https://u.expo.dev/48c9ca60-25af-4388-a2c6-7ef2dd85f9a7"
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
     }
   }
 }
