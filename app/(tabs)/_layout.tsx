@@ -1,37 +1,46 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+import React from 'react'
+import { Tabs } from 'expo-router'
+import { Colours } from '@/constants/Colours'
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { FontAwesome6 } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import TabBar from '@/components/tab_bar/TabBar';
 
-import { TabBarIcon } from '@/components/navigation/TabBarIcon';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const Layout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
-          ),
-        }}
-      />
+    <Tabs 
+        tabBar={props=> <TabBar {...props} />}
+    >
+        <Tabs.Screen 
+            name="index" 
+            options={{
+                tabBarLabel: 'Find',
+                tabBarIcon: ({ color, size}) => <FontAwesome6 name='binoculars' size={size} color={color} />
+            }}
+        />
+        <Tabs.Screen 
+            name="events" 
+            options={{
+                tabBarLabel: 'Events',
+                tabBarIcon: ({ color, size}) => <Ionicons name='earth' size={size} color={color} />
+            }}
+        />
+        <Tabs.Screen 
+            name="redesign" 
+            options={{
+                tabBarLabel: 'Redesign',
+                tabBarIcon: ({ color, size}) => <FontAwesome5 name='lightbulb' size={size} color={color} />
+            }}
+        />
+        <Tabs.Screen 
+            name="more" 
+            options={{
+                tabBarLabel: 'More',
+                tabBarIcon: ({ color, size}) => <FontAwesome5 name='lightbulb' size={size} color={color} />
+            }}
+        />
     </Tabs>
-  );
+  )
 }
+
+export default Layout
