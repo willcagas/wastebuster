@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Platform, StatusB
 import React, { useRef, useState } from 'react'
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, FontAwesome5, FontAwesome6, Entypo, FontAwesome, Octicons } from '@expo/vector-icons'
 import { Colours } from '@/constants/Colours'
-
+import * as Haptics from 'expo-haptics'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
 type IconLibrary = typeof Ionicons | typeof Entypo | typeof MaterialIcons | typeof MaterialCommunityIcons | typeof FontAwesome5 | typeof FontAwesome6;
@@ -23,6 +23,11 @@ const iconLibraries = {
 }
 
 const categories: Category[] = [
+  {
+    name: 'Saved',
+    icon: 'star-outline',
+    library: 'Ionicons',
+  },
   {
     name: 'All',
     icon: 'design-services',
@@ -48,21 +53,12 @@ const SearchHeader = ({ onCategoryChanged }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const scrollRef = useRef<ScrollView>(null)
   const itemsRef = useRef<Array<TouchableOpacity | null >>([])
-  const[activeIndex, setActiveIndex] = useState(0)
+  const[activeIndex, setActiveIndex] = useState(1)
   const [text, setText] = useState('')
 
   const selectCategory = (index: number) => {
     const selected = itemsRef.current[index]
     setActiveIndex(index)
-
-    // itemsRef.current[index]?.measureLayout?.(
-    //   // @ts-ignore
-    //   scrollRef.current,
-    //   (x, y, width, height) => {
-    //     const offset = Math.max(0, x - 10)
-    //     scrollRef.current?.scrollTo({ x: offset, y: 0, animated: true })
-    //   }
-    // )
 
     onCategoryChanged(categories[index].name)
   }
@@ -84,7 +80,7 @@ const SearchHeader = ({ onCategoryChanged }: Props) => {
               style={{fontSize: 15, width: '82.5%'}}
             />
             <TouchableOpacity 
-              onPress={() => setText('')} 
+              onPress={() => {setText(''), Haptics.selectionAsync()}} 
               disabled={!isFocused || text === '' ? true : false}
               style={!isFocused || text === '' ? {display: 'none'} : {opacity: 100}}
             >
@@ -102,6 +98,7 @@ const SearchHeader = ({ onCategoryChanged }: Props) => {
           gap: 12.5,
           paddingHorizontal: 15,
           paddingTop: 5,
+          paddingBottom: 5,
           height: '85%',
         }}>
           {categories.map((item, index) => {
@@ -110,7 +107,7 @@ const SearchHeader = ({ onCategoryChanged }: Props) => {
             return (
               <View key={index} style={{flex: 1}}>
                 <TouchableOpacity 
-                onPress={() => selectCategory(index)}
+                onPress={() => {selectCategory(index), Haptics.impactAsync()}}
                 ref={(el) => itemsRef.current[index] = el}
                 style={[activeIndex === index ? styles.categoriesBtnActive : styles.categoriesBtn, { paddingHorizontal: 7.5 }]}
                 >
@@ -134,7 +131,7 @@ const SearchHeader = ({ onCategoryChanged }: Props) => {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
-    height: 90,
+    height: 95,
   },
   actionRow: {
     flexDirection: 'row',
