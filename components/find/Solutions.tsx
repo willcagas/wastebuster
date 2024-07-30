@@ -23,10 +23,10 @@ const DataScreen = () => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get<DataItem[]>('https://raw.githubusercontent.com/willcagas/wastebuster-public-database/main/wastebuster-database.json');
+      const response = await axios.get<DataItem[]>('https://raw.githubusercontent.com/willcagas/wastebuster-public-database/main/public-database-2023.json');
       setData(response.data)
     } catch (error) {
-      console.error('Error fetching data:', error)
+      console.error('Error fetching data hello:', error)
     }
   }
 
@@ -36,10 +36,9 @@ const DataScreen = () => {
 
   const renderItem = ({ item }: { item:CategoryProps }) => (
     <View style={styles.container}>
-      <Link href={`/category/${item.id}`} asChild>
+      <Link href={`/category/${item.name}`} asChild>
         <TouchableOpacity activeOpacity={0.7} delayPressIn={0} >
           <View style={styles.category}>
-            {/* <Image source={require('@/assets/images/placeholder.png')} style={styles.image} /> */}
             <View style={styles.coloredSide}>
               <MaterialIcons name='keyboard-arrow-right' size={60} color='#fff'/>
             </View>
@@ -100,11 +99,6 @@ const styles = StyleSheet.create({
     backgroundColor: Colours.primary, 
     borderTopRightRadius: 20,
     borderBottomRightRadius: 20,
-  },
-  image: {
-    width: '100%',
-    height: 250,
-    borderRadius: 10,
   },
   name: {
     fontFamily: 'mon-b', 

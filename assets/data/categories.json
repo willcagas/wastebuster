@@ -2,22 +2,21 @@
     { "id": 0, "name": "Appliances", "image": "" },
     { "id": 1, "name": "Bicycles", "image": "" },
     { "id": 2, "name": "Books", "image": "" },
-    { "id": 3, "name": "Building", "image": "" },
-    { "id": 4, "name": "Cars", "image": "" },
-    { "id": 5, "name": "Eco-Friendly", "image": "" },
-    { "id": 6, "name": "Electronics", "image": "" },
-    { "id": 7, "name": "Fillery", "image": "" },
-    { "id": 8, "name": "Food", "image": "" },
-    { "id": 9, "name": "Footwear", "image": "" },
-    { "id": 10, "name": "Furniture", "image": "" },
-    { "id": 11, "name": "Hazardous Materials", "image": "" },
-    { "id": 12, "name": "Metals", "image": "" },
-    { "id": 13, "name": "Office", "image": "" },
-    { "id": 14, "name": "Plastics", "image": "" },
-    { "id": 15, "name": "Sports", "image": "" },
-    { "id": 16, "name": "Textiles", "image": "" },
-    { "id": 17, "name": "Tools", "image": "" },
-    { "id": 18, "name": "Toys", "image": "" }
-  ]
+    { "id": 3, "name": "Cars", "image": "" },
+    { "id": 4, "name": "Eco Friendly", "image": "" },
+    { "id": 5, "name": "Electronics", "image": "" },
+    { "id": 6, "name": "Fillery", "image": "" },
+    { "id": 7, "name": "Food", "image": "" },
+    { "id": 8, "name": "Footwear", "image": "" },
+    { "id": 9, "name": "Furniture", "image": "" },
+    { "id": 10, "name": "Hazardous Materials", "image": "" },
+    { "id": 11, "name": "Metals", "image": "" },
+    { "id": 12, "name": "Office", "image": "" },
+    { "id": 13, "name": "Plastics", "image": "" },
+    { "id": 14, "name": "Sports", "image": "" },
+    { "id": 15, "name": "Textiles", "image": "" },
+    { "id": 16, "name": "Tools", "image": "" },
+    { "id": 17, "name": "Toys", "image": "" }
+]
   
   

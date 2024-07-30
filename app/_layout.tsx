@@ -28,7 +28,8 @@ export default function RootLayout() {
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
 
-      <Stack.Screen name="category/[id]" options={{ headerTitle: '', headerTransparent: true}} />
+      <Stack.Screen name="category/[name]" options={{ headerTitle: '', headerTransparent: true}} />
+      <Stack.Screen name="event/[id]" options={{ headerTitle: '', headerTransparent: true}} />
     </Stack>
   );
 }

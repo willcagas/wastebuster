@@ -69,16 +69,17 @@ const Ideas = ({ ideas: items, category }: Props) => {
     loadSavedItems();
   }, [category]);
 
+  // Fix category 
   const filteredItems = useMemo(() =>
     items.filter(item => category === 'All' || item.category === category || savedItems.includes(item.id)),
     [items, category, savedItems]
-  );
+  )
 
   const toggleSaved = async (id: ItemId) => {
     savedItems.includes(id)
     ? (await removeItemId(id), setSavedItems(prevItems => prevItems.filter(itemId => itemId !== id)))
     : (await saveItemId(id), setSavedItems(prevItems => [...prevItems, id]));
-  };
+  }
 
   const renderRow = ({ item }: { item: any }) => (
     <View>
@@ -99,7 +100,7 @@ const Ideas = ({ ideas: items, category }: Props) => {
               />
 
               <TouchableOpacity
-                style={savedItems.includes(item.id) ? styles.roundBtnActive : styles.roundBtn}
+                style={styles.roundBtn}
                 onPress={async () => {
                   await toggleSaved(item.id);
                   await Haptics.selectionAsync();
@@ -123,25 +124,25 @@ const Ideas = ({ ideas: items, category }: Props) => {
             </View>
 
             <View>
-              <Animated.Text style={styles.name} entering={FadeInRight.delay(600).duration(350)} exiting={FadeOutRight.duration(100)}>{item.name}</Animated.Text>
-
-              <Animated.Text entering={FadeInRight.delay(700).duration(350)} exiting={FadeOutRight.duration(100)} style={styles.description}>
-                <Text style={{ fontFamily: 'mon-b' }}>Description on site:</Text>
-                <Text> "{item.description}"</Text>
-              </Animated.Text>
+              <Animated.Text style={styles.textHeader}>Name</Animated.Text>
+              <Animated.Text style={styles.textSubHeader}>{item.name}</Animated.Text>
+              
+              <Animated.Text style={styles.textHeader}>Description on Site</Animated.Text>
+              <Animated.Text style={styles.textDesc}>"{item.description}"</Animated.Text>
+    
             </View>
           </View>
         </Animated.View>
       </TouchableOpacity>
     </View>
-  );
+  )
 
   return (
-    <SafeAreaView edges={['bottom']} style={{ flex: 1, paddingBottom: 50 }}>
+    <SafeAreaView edges={['bottom']} style={{ flex: 1, paddingBottom: 50, backgroundColor: '#fff' }}>
       {filteredItems.length === 0 ? (
         <View style={{ flex: 1, alignItems: 'center', paddingTop: 35 }}>
           <Text style={{ fontFamily: 'mon-b', fontSize: 17.5, color: Colours.grey }}>
-            Nothing here yet...
+            Nothing here to show...
           </Text>
         </View>
       ) : (
@@ -184,21 +185,7 @@ const styles = StyleSheet.create({
     width: 42.5,
     height: 42.5,
     position: 'absolute',
-    top: '6%',
-    right: '4%',
-    borderRadius: 50,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: Colours.primary,
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colours.grey,
-  },
-  roundBtnActive: {
-    width: 42.5,
-    height: 42.5,
-    position: 'absolute',
-    top: '6%',
+    top: '5%',
     right: '4%',
     borderRadius: 50,
     backgroundColor: '#fff',
@@ -222,11 +209,24 @@ const styles = StyleSheet.create({
     height: 150,
     width: 150,
   },
-  description: {
-    fontFamily: 'mon',
-    paddingTop: 10,
+  textSubHeader: {
+    fontFamily: 'mon-b',
+    paddingTop: 2,
     color: '#000',
+    fontSize: 17.5
   },
+  textDesc: {
+    fontFamily: 'mon',
+    paddingTop: 2,
+    color: '#000',
+    fontSize: 14,
+  },
+  textHeader: {
+    fontFamily: 'mon-sb',
+    paddingTop: 10,
+    fontSize: 13,
+    color: Colours.grey
+  }
 });
 
 export default Ideas;

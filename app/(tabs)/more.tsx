@@ -1,11 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import More from '@/components/more/More'
+import AboutUsPage from '@/components/more/AboutUs'
 
 const Page = () => {
   return (
-    <View>
-      <More/>
+    <View style={{flex: 1}}>
+      <AboutUsPage/>
     </View>
   )
 }

@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Linking } from 'react-native'
 import React, { useLayoutEffect } from 'react'
 import { Link, useLocalSearchParams, useNavigation } from 'expo-router'
-import clubsData from '@/assets/data/categories.json'
+import eventData from '@/assets/data/events.json'
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollViewOffset } from 'react-native-reanimated'
 import { Ionicons } from '@expo/vector-icons'
 import { Colours } from '@/constants/Colours'
@@ -11,7 +11,7 @@ const { height, width } = Dimensions.get('window')
 
 const Page = () => {
   const { id } = useLocalSearchParams<{id: string}>()
-  const club = (clubsData as any[]).find((item) => item.id == id)
+  const event = (eventData as any[]).find((item) => item.id == id)
   const scrollRef = useAnimatedRef<Animated.ScrollView>()
   const navigation = useNavigation()
 
@@ -20,7 +20,6 @@ const Page = () => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerBackground: () => <Animated.View style={[headerAnimatedStyle, styles.header]} />,
-
       headerLeft: () => (
         <TouchableOpacity style={styles.roundBtn} onPress={() => navigation.goBack()}>
           <Ionicons name='chevron-back' size={24} color={'#000'} />
@@ -54,10 +53,9 @@ const Page = () => {
     }
   })
 
-  // MIGHT NEED TO USE ASYNC OR SMTH
   const openInstagram = () => {
-    if (club?.instagram) {
-      Linking.openURL(club.instagram)
+    if (event?.instagram) {
+      Linking.openURL(event.instagram)
     }
   }
  
@@ -66,13 +64,21 @@ const Page = () => {
       <Animated.ScrollView ref={scrollRef}
       scrollEventThrottle={16}
       >
-        <Animated.Image source={require('@/assets/images/placeholder.png')} style={[styles.image, imageAnimatedstyle]} />
+        <Animated.Image source={event.image
+                    ? { uri: event.image }
+                    : require('@/assets/images/placeholder.png')} style={[styles.image, imageAnimatedstyle]} />
         <View style={styles.infoContainer}>
           <View style={styles.headerRow}>
-            <Text style={styles.name}>{club?.name}</Text>
+            <Text style={styles.name}>{event?.name}</Text>
+
+            {event?.instagram && (
+              <TouchableOpacity style={{paddingHorizontal: 20}} onPress={openInstagram}>
+                  <Ionicons name='logo-instagram' size={30} color={'#000'}/> 
+              </TouchableOpacity>
+            )}
           </View>
           
-          <Text style={styles.description}>{club?.description}</Text>
+          <Text style={styles.description}>{event?.description}</Text>
 
           <View style={styles.filler} />
         </View>

@@ -1,0 +1,140 @@
+[
+    { 
+        "id": 0, 
+        "name": "Rain Garden Tour and Guided Plant Walk", 
+        "organization": "Green Venture",
+        "date": "2024-08-05T09:00:00-05:00",
+        "duration": 1.5,
+        "type": "In-Person",
+        "location": "Laidlaw Memorial United Church",
+        "address": "155 Ottawa Street North Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/Laidlaw-walkway-progress-scaled.jpg"
+    },
+    { 
+        "id": 1, 
+        "name": "Food Harvesting Workshop at Niwas a Kendaaswin Teg/McQuesten Urban Farm",
+        "organization": "Green Venture",
+        "date": "2024-08-06T17:00:00-05:00",
+        "duration": 1,
+        "type": "In-Person",
+        "location": "Niwas​a Kendaaswin Teg/McQuesten Urban Farm",
+        "address": "785 Britannia Ave, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/PXL_20240717_220258480-scaled-e1721834747454.jpg"
+    },
+    { 
+        "id": 2, 
+        "name": "Waterfront Walking Tour",
+        "organization": "Green Venture",
+        "date": "2024-08-07T18:30:00-05:00",
+        "duration": 2,
+        "type": "In-Person",
+        "location": "Bayfront Park (BARC Kiosk near trail entrance)",
+        "address": "200 Harbourfront Drive, Hamilton, ON",
+        "image": "https://tourismhamilton.com/media/Tourism-Hamilton-Owned-2488-wl-873d2cdb-4f0c-4727-aca1-0c7f2b5f3348-medium.jpg"
+    },
+    { 
+        "id": 3, 
+        "name": "Water Harvesting and Rain Garden Tour at St. John's",
+        "organization": "Green Venture",
+        "date": "2024-08-08T18:30:00-05:00",
+        "duration": 2,
+        "type": "In-Person",
+        "location": "The Church of Saint John the Evangelist",
+        "address": "320 Charlton Ave W, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/SJE-Garden.jpeg"
+    },
+    { 
+        "id": 4, 
+        "organization": "Green Venture",
+        "name": "Yellow Fish Road",
+        "date": "2024-08-09T17:00:00-05:00",
+        "duration": 1,
+        "type": "In-Person",
+        "location": "T.B. McQuesten Community Park",
+        "address": "1199 Upper Wentworth Street Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/YellowFish-Road-Header-e1721833744946.png"
+    },
+    { 
+        "id": 5, 
+        "name": "Books", 
+        "image": ""
+    },
+    { 
+        "id": 6, 
+        "name": "Cars", 
+        "image": "" 
+    },
+    { 
+        "id": 7, 
+        "name": "Eco Friendly", 
+        "image": "" 
+    },
+    { 
+        "id": 8, 
+        "name": "Electronics", 
+        "image": "" 
+    },
+    { 
+        "id": 9, 
+        "name": "Fillery", 
+        "image": "" 
+    },
+    { 
+        "id": 10, 
+        "name": "Food", 
+        "image": "" 
+    },
+    { 
+        "id": 11, 
+        "name": "Footwear", 
+        "image": "" 
+    },
+    { 
+        "id": 12, 
+        "name": "Furniture", 
+        "image": "" 
+    },
+    { 
+        "id": 13, 
+        "name": "Hazardous Materials", 
+        "image": "" 
+    },
+    { 
+        "id": 14, 
+        "name": "Metals", 
+        "image": "" 
+    },
+    { 
+        "id": 15, 
+        "name": "Office", 
+        "image": "" 
+    },
+    { 
+        "id": 16, 
+        "name": "Plastics", 
+        "image": "" 
+    },
+    { 
+        "id": 17, 
+        "name": "Sports", 
+        "image": "" 
+    },
+    { 
+        "id": 18, 
+        "name": "Textiles", 
+        "image": "" 
+    },
+    { 
+        "id": 19, 
+        "name": "Tools", 
+        "image": "" 
+    },
+    { 
+        "id": 20, 
+        "name": "Toys", 
+        "image": "" 
+    }
+]
+
+  
+  
