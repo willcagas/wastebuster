@@ -1,22 +1,23 @@
 [
-    { "id": 0, "name": "Appliances", "image": "" },
-    { "id": 1, "name": "Bicycles", "image": "" },
-    { "id": 2, "name": "Books", "image": "" },
-    { "id": 3, "name": "Cars", "image": "" },
-    { "id": 4, "name": "Eco Friendly", "image": "" },
-    { "id": 5, "name": "Electronics", "image": "" },
-    { "id": 6, "name": "Fillery", "image": "" },
-    { "id": 7, "name": "Food", "image": "" },
-    { "id": 8, "name": "Footwear", "image": "" },
-    { "id": 9, "name": "Furniture", "image": "" },
-    { "id": 10, "name": "Hazardous Materials", "image": "" },
-    { "id": 11, "name": "Metals", "image": "" },
-    { "id": 12, "name": "Office", "image": "" },
-    { "id": 13, "name": "Plastics", "image": "" },
-    { "id": 14, "name": "Sports", "image": "" },
-    { "id": 15, "name": "Textiles", "image": "" },
-    { "id": 16, "name": "Tools", "image": "" },
-    { "id": 17, "name": "Toys", "image": "" }
+    { "id": 0, "name": "Appliances", "associated": ["Refrigerator", "Washing Machine", "Microwave Oven", "Dishwasher", "Air Conditioner", "Vacuum Cleaner", "Blender", "Coffee Maker", "Toaster", "Dryer"] },
+    { "id": 1, "name": "Bicycles", "associated": ["Mountain Bike", "Road Bike", "Electric Bike", "Hybrid Bike", "Cruiser Bike", "Folding Bike", "BMX Bike", "Touring Bike", "Cyclocross Bike", "Fat Bike"] },
+    { "id": 2, "name": "Books", "associated": ["Fiction", "Non-fiction", "Textbooks", "Mystery", "Science Fiction", "Romance", "Fantasy", "Biographies", "Self-help", "Cookbooks"] },
+    { "id": 3, "name": "Cars", "associated": ["Sedan", "SUV", "Electric Car", "Coupe", "Convertible", "Hatchback", "Truck", "Van", "Wagon", "Hybrid Car"] },
+    { "id": 4, "name": "Eco Friendly", "associated": ["Reusable Bags", "Solar Panels", "Eco-friendly Cleaning Products", "Bamboo Toothbrushes", "Compostable Utensils", "Recycled Paper Products", "Energy-efficient Light Bulbs", "Reusable Water Bottles", "Biodegradable Trash Bags", "Organic Cotton Clothing"] },
+    { "id": 5, "name": "Electronics", "associated": ["Smartphone", "Laptop", "Tablet", "Smartwatch", "Camera", "Headphones", "Gaming Console", "Bluetooth Speaker", "Television", "TV", "Apple", "PC", "Computer"] },
+    { "id": 6, "name": "Fillery", "associated": ["Bulk Food Items", "Refillable Cleaning Supplies", "Refillable Toiletries", "Essential Oils", "Spices", "Grains", "Nuts", "Seeds", "Honey", "Olive Oil"] },
+    { "id": 7, "name": "Food", "associated": ["Organic Vegetables", "Packaged Snacks", "Canned Goods", "Dairy Products", "Frozen Foods", "Meat", "Seafood", "Grains", "Beverages", "Baked Goods"] },
+    { "id": 8, "name": "Footwear", "associated": ["Sneakers", "Boots", "Sandals", "Dress Shoes", "Running Shoes", "Flip Flops", "Loafers", "Heels", "Slippers", "Hiking Boots", "Shoes"] },
+    { "id": 9, "name": "Furniture", "associated": ["Sofa", "Dining Table", "Bed Frame", "Coffee Table", "Bookshelf", "Desk", "Chair", "Wardrobe", "Dresser", "TV Stand"] },
+    { "id": 10, "name": "Hazardous Materials", "associated": ["Paints", "Batteries", "Pesticides", "Cleaning Solvents", "Flammable Liquids", "Asbestos", "Mercury-containing Products", "Ammunition", "Radioactive Materials", "Medical Waste"] },
+    { "id": 11, "name": "Metals", "associated": ["Aluminum", "Steel", "Copper", "Brass", "Iron", "Lead", "Zinc", "Nickel", "Tin", "Titanium"] },
+    { "id": 12, "name": "Office", "associated": ["Pens", "Notebooks", "Stapler", "Printer", "Desk", "Chair", "Folders", "Paper Clips", "Sticky Notes", "Desk Organizer"] },
+    { "id": 13, "name": "Plastics", "associated": ["Plastic Bottles", "Plastic Bags", "Plastic Containers", "PVC Pipes", "Plastic Toys", "Plastic Packaging", "Plastic Utensils", "Plastic Furniture", "Plastic Sheets", "Acrylic"] },
+    { "id": 14, "name": "Sports", "associated": ["Soccer Ball", "Basketball", "Tennis Racket", "Baseball Glove", "Golf Clubs", "Hockey Stick", "Yoga Mat", "Football", "Badminton Shuttlecock", "Boxing Gloves"] },
+    { "id": 15, "name": "Textiles", "associated": ["Cotton", "Wool", "Silk", "Linen", "Polyester", "Nylon", "Rayon", "Acrylic", "Spandex", "Denim"] },
+    { "id": 16, "name": "Tools", "associated": ["Hammer", "Screwdriver", "Wrench", "Drill", "Saw", "Pliers", "Tape Measure", "Level", "Chisel", "Utility Knife"] },
+    { "id": 17, "name": "Toys", "associated": ["Action Figures", "Dolls", "Building Blocks", "Board Games", "Stuffed Animals", "Puzzle Games", "Toy Cars", "Educational Toys", "Outdoor Toys", "Remote Control Toys"] }
 ]
+
   
   

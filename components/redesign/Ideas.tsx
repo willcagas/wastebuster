@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image, Linking, ImageBackground, RefreshControl } from 'react-native';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import Animated, { FadeInRight, FadeOutRight, FadeIn, FadeOut } from 'react-native-reanimated';
@@ -7,10 +7,12 @@ import { Colours } from '@/constants/Colours';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Haptics from 'expo-haptics';
 import { FlashList } from '@shopify/flash-list';
+import ReadMore from '@fawazahmed/react-native-read-more';
 
 interface Props {
   ideas: any[];
   category: string;
+  search: string;
 }
 
 type ItemId = string | number;
@@ -49,9 +51,10 @@ async function removeItemId(id: ItemId): Promise<void> {
   }
 }
 
-const Ideas = ({ ideas: items, category }: Props) => {
+const Ideas = ({ ideas: items, category, search }: Props) => {
   const [loading, setLoading] = useState(false);
-  const [savedItems, setSavedItems] = useState<ItemId[]>([]);
+  const [savedItems, setSavedItems] = useState<ItemId[]>([])
+  const [refreshing, setRefreshing] = useState<boolean>(false)
 
   useEffect(() => {
     const loadSavedItems = async () => {
@@ -69,10 +72,16 @@ const Ideas = ({ ideas: items, category }: Props) => {
     loadSavedItems();
   }, [category]);
 
-  // Fix category 
-  const filteredItems = useMemo(() =>
-    items.filter(item => category === 'All' || item.category === category || savedItems.includes(item.id)),
-    [items, category, savedItems]
+  const filteredItems = useMemo(() => 
+    items.filter(item => {
+      const nameMatch = item.name?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false;
+      const descriptionMatch = item.description?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false;
+      const categoryMatch = category === 'All' || item.category === category;
+      const isSaved = savedItems.includes(item.id);
+  
+      return (nameMatch || descriptionMatch) && (categoryMatch || isSaved);
+    }),
+    [items, category, savedItems, search]
   )
 
   const toggleSaved = async (id: ItemId) => {
@@ -93,7 +102,7 @@ const Ideas = ({ ideas: items, category }: Props) => {
                   ? { uri: `https://img.youtube.com/vi/${item.url.split("v=")[1]}/0.jpg` }
                   : item.image
                     ? { uri: item.image }
-                    : require('@/assets/images/placeholder.png')
+                    : require('@/assets/images/miscellaneous/placeholder.png')
                 }
                 style={styles.image}
                 resizeMode="cover"
@@ -117,7 +126,7 @@ const Ideas = ({ ideas: items, category }: Props) => {
                 <Animated.Image
                   entering={FadeIn.delay(300).duration(100)}
                   exiting={FadeOut.duration(100)}
-                  source={require('@/assets/images/play.png')}
+                  source={require('@/assets/images/miscellaneous/play.png')}
                   style={styles.youtube_ico}
                 />
               )}
@@ -128,8 +137,9 @@ const Ideas = ({ ideas: items, category }: Props) => {
               <Animated.Text style={styles.textSubHeader}>{item.name}</Animated.Text>
               
               <Animated.Text style={styles.textHeader}>Description on Site</Animated.Text>
-              <Animated.Text style={styles.textDesc}>"{item.description}"</Animated.Text>
-    
+              <ReadMore numberOfLines={3} seeMoreStyle={styles.seeText} seeLessStyle={styles.seeText} style={styles.textDesc}>
+                "{item.description}"
+              </ReadMore>
             </View>
           </View>
         </Animated.View>
@@ -137,19 +147,41 @@ const Ideas = ({ ideas: items, category }: Props) => {
     </View>
   )
 
+  //REFRESH
+  const onRefresh = useCallback(async () => {
+    setRefreshing(true);
+
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    setRefreshing(false);
+  }, []);
+
   return (
     <SafeAreaView edges={['bottom']} style={{ flex: 1, paddingBottom: 50, backgroundColor: '#fff' }}>
       {filteredItems.length === 0 ? (
-        <View style={{ flex: 1, alignItems: 'center', paddingTop: 35 }}>
-          <Text style={{ fontFamily: 'mon-b', fontSize: 17.5, color: Colours.grey }}>
-            Nothing here to show...
-          </Text>
-        </View>
+        <View style={styles.emptyContainer}>
+         <Image style={{height: '35%', width: '50%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
+
+         <Text style={{ fontFamily: 'mon-b', fontSize: 17.5, color: Colours.grey}}>
+           Nothing here to show...
+         </Text>
+       </View>
+     
       ) : (
         <FlashList
           data={filteredItems}
           renderItem={renderRow}
           estimatedItemSize={200}
+          showsVerticalScrollIndicator={true}
+          indicatorStyle="black"
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={onRefresh}
+              tintColor={Colours.secondary}
+              colors={[Colours.primary]} 
+              progressBackgroundColor="#fff"
+            />
+          }
         />
       )}
     </SafeAreaView>
@@ -157,6 +189,14 @@ const Ideas = ({ ideas: items, category }: Props) => {
 };
 
 const styles = StyleSheet.create({
+  separator: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#E0E0E0', 
+    right: 0,
+    width: '100%', 
+    alignSelf: 'center',
+    marginVertical: 10,
+  },
   idea: {
     padding: 16,
   },
@@ -165,14 +205,17 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     borderRadius: 20,
     backgroundColor: '#fff',
+    borderColor: '#c2c2c2',
+    borderWidth: StyleSheet.hairlineWidth,
+
     elevation: 2,
     shadowColor: '#000',
     shadowOpacity: 0.12,
     shadowRadius: 8,
     shadowOffset: {
       width: 1,
-      height: 1,
-    },
+      height: 1
+    }
   },
   image: {
     width: '100%',
@@ -226,7 +269,17 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     fontSize: 13,
     color: Colours.grey
-  }
+  },
+  seeText: {
+    fontFamily: 'mon-sb',
+    color: Colours.primary,
+  },
+  emptyContainer: { 
+    flex: 1, 
+    alignItems: 'center', 
+    paddingTop: 100,
+    gap: 12.5
+  },
 });
 
 export default Ideas;

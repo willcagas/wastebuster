@@ -2,139 +2,155 @@
     { 
         "id": 0, 
         "name": "Rain Garden Tour and Guided Plant Walk", 
+        "description": "In June, Green Venture hosted the Laidlaw Memorial United Church Planting Event, participating in the Living Cities project to bring accessible green spaces to Hamilton! With additional funding from ArcelorMittal Dofasco’s Corporate Community Fund, Green Cities Foundation, Rain Haven, and Tree Canada, we transformed over 2000 sq feet of lawn, pavement, and concrete into an urban green space filled with 500+ native species and trees. This guided rain garden tour and plant walk will allow you to explore the new rain gardens at Laidlaw Memorial United Church and learn about the design and plant selection from the Landscape Architect, Adele Pierre. Bring any gardening and plant design questions you have and we’ll be happy to answer!",
         "organization": "Green Venture",
-        "date": "2024-08-05T09:00:00-05:00",
+        "date": "2024-08-05T18:00:00-05:00",
         "duration": 1.5,
         "type": "In-Person",
         "location": "Laidlaw Memorial United Church",
         "address": "155 Ottawa Street North Hamilton, ON",
-        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/Laidlaw-walkway-progress-scaled.jpg"
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/Laidlaw-walkway-progress-scaled.jpg",
+        "url": "https://greenventure.ca/hamilton-stormwater-week-2024/"
     },
     { 
         "id": 1, 
-        "name": "Food Harvesting Workshop at Niwas a Kendaaswin Teg/McQuesten Urban Farm",
+        "name": "Food Harvesting Workshop at Niwasa Kendaaswin Teg/McQuesten Urban Farm",
+        "description": "Explore the Niwas​a Kendaaswin Teg/McQuesten Urban Farm and learn from urban gardeners about food harvesting, community-oriented food initiatives, water efficient gardening and more! This event promotes hands on learning as we join with our partners Niwas​a Kendaaswin Teg /McQuesten Urban Farm for some seasonal stewardship on their farm. Seasonal tasks include: weeding, planting and harvesting! Be sure to wear closed-toed shoes and long pants. Bring a reusable water bottle, sunscreen and a hat!",
         "organization": "Green Venture",
         "date": "2024-08-06T17:00:00-05:00",
         "duration": 1,
         "type": "In-Person",
-        "location": "Niwas​a Kendaaswin Teg/McQuesten Urban Farm",
+        "location": "Niwasa Kendaaswin Teg/McQuesten Urban Farm",
         "address": "785 Britannia Ave, Hamilton, ON",
-        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/PXL_20240717_220258480-scaled-e1721834747454.jpg"
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/PXL_20240717_220258480-scaled-e1721834747454.jpg",
+        "url": "https://greenventure.ca/hamilton-stormwater-week-2024/"
     },
     { 
         "id": 2, 
         "name": "Waterfront Walking Tour",
+        "description": "Join us on an educational and engaging Waterfront Walking Tour in Bayfront Park with the Bay Area Restoration Council (BARC) and Tim Crowley from the City of Hamilton! All are welcome to attend regardless of age or ability. Staff from the Bay Area Restoration Council and the City of Hamilton will guide us on a walk to discuss grey infrastructure in Hamilton (e.g., storm sewers, combined overflow tanks, separate and combined systems), our watershed, and community greening opportunities. On this guided walk, we will explore the bay, learn more about Hamilton’s stormwater system, and enjoy a leisurely stroll on the trail. Please bring comfortable walking shoes, a hat, and sunscreen.",
         "organization": "Green Venture",
         "date": "2024-08-07T18:30:00-05:00",
         "duration": 2,
         "type": "In-Person",
         "location": "Bayfront Park (BARC Kiosk near trail entrance)",
         "address": "200 Harbourfront Drive, Hamilton, ON",
-        "image": "https://tourismhamilton.com/media/Tourism-Hamilton-Owned-2488-wl-873d2cdb-4f0c-4727-aca1-0c7f2b5f3348-medium.jpg"
+        "image": "https://tourismhamilton.com/media/Tourism-Hamilton-Owned-2488-wl-873d2cdb-4f0c-4727-aca1-0c7f2b5f3348-medium.jpg",
+        "url": "https://greenventure.ca/hamilton-stormwater-week-2024/"
     },
     { 
         "id": 3, 
-        "name": "Water Harvesting and Rain Garden Tour at St. John's",
+        "name": "Rain Harvesting Info Night",
+        "description": "Drop by and learn from Norm Newbery and Erinn Turnball about some of the Green Infrastructure features on-site at St.John the Evangelist while also learning about the project’s history! The Green Infrastructure elements on site, like the rain gardens and the holding tank with pump and soaker hoses, are an excellent demonstration of water management and efficiency in an urban setting! 🌧️💦 The holding tank catches and retains stormwater to distribute through the pump and soaker hoses. Then, these hoses encourage healthier plant growth and water absorption by distributing the water at the root level, generating healthier plants designed and arranged to help hold excess amounts of water year-round! BONUS: attendees will receive native plant seed packets!",
         "organization": "Green Venture",
         "date": "2024-08-08T18:30:00-05:00",
         "duration": 2,
         "type": "In-Person",
         "location": "The Church of Saint John the Evangelist",
         "address": "320 Charlton Ave W, Hamilton, ON",
-        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/SJE-Garden.jpeg"
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/SJE-Garden.jpeg",
+        "url": "https://greenventure.ca/hamilton-stormwater-week-2024/"
     },
     { 
         "id": 4, 
-        "organization": "Green Venture",
         "name": "Yellow Fish Road",
+        "description": "Celebrate the end of Stormwater Week on Friday, August 9 2024 from 5-6:00PM with a fun community education initiative! Join the Bay Area Restoration Council (BARC) and Green Venture as we paint yellow fish onto sewer grates, encouraging local residents to remember the influence that their water runoff has on local waterways, species, and ecosystems. Be prepared to paint and community educate!",
+        "organization": "Green Venture",
         "date": "2024-08-09T17:00:00-05:00",
         "duration": 1,
         "type": "In-Person",
         "location": "T.B. McQuesten Community Park",
         "address": "1199 Upper Wentworth Street Hamilton, ON",
-        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/YellowFish-Road-Header-e1721833744946.png"
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/YellowFish-Road-Header-e1721833744946.png",
+        "url": "https://greenventure.ca/hamilton-stormwater-week-2024/"
     },
     { 
         "id": 5, 
-        "name": "Books", 
-        "image": ""
+        "name": "Invasive Removal with HCA",
+        "description": "Join Green Venture and the Hamilton Conservation Authority at the Windermere Basin as we remove invasive plants from the site.",
+        "organization": "Green Venture and Hamilton Conservation Authority",
+        "date": "2024-08-01T16:00:00-05:00",
+        "duration": 2,
+        "type": "In-Person",
+        "location": "Windermere Basin",
+        "address": "Eastport Dr, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/IMG_5560-scaled.jpg?id=11171",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     },
     { 
         "id": 6, 
-        "name": "Cars", 
-        "image": "" 
+        "name": "Hamilton Farmers Market",
+        "description": "Visit Green Venture’s station near the entrance to the Hamilton Farmer’s Market on August 9th. Learn about our seed libraries and make pollinator planter kits and seed balls.",
+        "organization": "Green Venture",
+        "date": "2024-08-09T09:00:00-05:00",
+        "duration": 4,
+        "type": "In-Person",
+        "location": "Hamilton Farmer’s Market",
+        "address": "35 York Blvd, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/Untitled-design-1.png?id=11172"
     },
     { 
         "id": 7, 
-        "name": "Eco Friendly", 
-        "image": "" 
+        "name": "Rain Garden Tours",
+        "description": "Take a self-paced tour and view various Rain Gardens around the city to see how Green Infrastructure can slow down the flow of rainwater and prevent flooding in Hamilton. Homeowners will be available to show their gardens and answer questions.",
+        "organization": "Green Venture",
+        "date": "2024-08-10T10:00:00-05:00",
+        "duration": 2,
+        "type": "In-Person",
+        "location": "Various locations around Hamilton",
+        "address": "",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2023/10/Rain-garden-with-downspout-into-rock-swale.jpg?id=9120",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     },
     { 
         "id": 8, 
-        "name": "Electronics", 
-        "image": "" 
+        "name": "Youth Showcase",
+        "description": "Youth are invited to see the projects completed by the high school participants in our Youth Stewardship & Professional Skills Program! Also includes FREE FOOD and an exciting guest speaker. More details to come!",
+        "date": "2024-08-13T11:00:00-05:00",
+        "duration": 2,
+        "type": "In-Person",
+        "location": "EcoHouse",
+        "address": "22 Veevers Drive, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/20240731_104100.jpg?id=11185",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     },
     { 
         "id": 9, 
-        "name": "Fillery", 
-        "image": "" 
+        "name": "Summer Party",
+        "description": "Join Green Venture for a summer party at EcoHouse for a tea party, clothing swap, vendor market and more activities!",
+        "organization": "Green Venture",
+        "date": "2024-08-16T17:00:00-05:00",
+        "duration": 3,
+        "type": "In-Person",
+        "location": "EcoHouse",
+        "address": "22 Veevers Drive, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/368A3366-scaled.jpg?id=11173",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     },
     { 
         "id": 10, 
-        "name": "Food", 
-        "image": "" 
+        "name": "Barton Farmer's Market",
+        "description": "Come to the Barton Farmer’s Market and visit Green Venture’s station to learn about community involvement opportunities.",
+        "organization": "Green Venture",
+        "date": "2024-08-25T09:00:00-05:00",
+        "duration": 4,
+        "type": "In-Person",
+        "location": "53 Birch Ave",
+        "address": "Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/July-21-Market-Booth-Map.png?id=11174",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     },
     { 
         "id": 11, 
-        "name": "Footwear", 
-        "image": "" 
-    },
-    { 
-        "id": 12, 
-        "name": "Furniture", 
-        "image": "" 
-    },
-    { 
-        "id": 13, 
-        "name": "Hazardous Materials", 
-        "image": "" 
-    },
-    { 
-        "id": 14, 
-        "name": "Metals", 
-        "image": "" 
-    },
-    { 
-        "id": 15, 
-        "name": "Office", 
-        "image": "" 
-    },
-    { 
-        "id": 16, 
-        "name": "Plastics", 
-        "image": "" 
-    },
-    { 
-        "id": 17, 
-        "name": "Sports", 
-        "image": "" 
-    },
-    { 
-        "id": 18, 
-        "name": "Textiles", 
-        "image": "" 
-    },
-    { 
-        "id": 19, 
-        "name": "Tools", 
-        "image": "" 
-    },
-    { 
-        "id": 20, 
-        "name": "Toys", 
-        "image": "" 
+        "name": "Garden Stewardship at Our Lady of Vietnam Church",
+        "description": "Help us maintain our green spaces around Our Lady of Vietnam Church from 9:00-10:30am on Thursday, August 29th.",
+        "organization": "Green Venture",
+        "date": "2024-08-29T09:00:00-05:00",
+        "duration": 1.5,
+        "type": "In-Person",
+        "location": "Our Lady of Vietnam Church",
+        "address": "1545 Barton St E, Hamilton, ON",
+        "image": "https://gvdevsite.wpenginepowered.com/wp-content/uploads/2024/07/IMG_20240502_162833037_HDR-scaled.jpg?id=11175",
+        "url": "https://greenventure.ca/green-venture-august-events/"
     }
 ]
-
-  
-  

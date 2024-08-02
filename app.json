@@ -4,13 +4,13 @@
     "slug": "wastebuster",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/miscellaneous/app_icon.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/miscellaneous/splash_screen.png",
       "resizeMode": "contain",
-      "backgroundColor": "#fff"
+      "backgroundColor": "#018749"
     },
     "ios": {
       "supportsTablet": true,

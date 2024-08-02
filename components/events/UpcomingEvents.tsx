@@ -1,4 +1,4 @@
-import { View, Text, Linking, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Linking, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
 import React, { useEffect, useState, useCallback } from 'react';
 import eventsData from '@/assets/data/events.json';
 import { FlashList } from '@shopify/flash-list';
@@ -10,6 +10,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
 
 type ItemId = string | number;
+
+const { height, width } = Dimensions.get('window')
 
 const SAVED_ITEM_IDS_KEY = '@MyApp:likedItemIds';
 
@@ -50,19 +52,20 @@ const calculateDaysFromNow = (isoDateString: string): number => {
   const currentDate = new Date();
   const differenceInMs = targetDate.getTime() - currentDate.getTime();
 
-  return Math.ceil(differenceInMs / (1000 * 60 * 60 * 24))
+  return (Math.ceil(differenceInMs / (1000 * 60 * 60 * 24)) - 1)
 }
 
  
 const UpcomingEvents = () => {
-  const [loading, setLoading] = useState(false);
-  const [savedItems, setSavedItems] = useState<ItemId[]>([]);
+  const [loading, setLoading] = useState(false)
+  const [savedItems, setSavedItems] = useState<ItemId[]>([])
+  const [likedFilter, setLikedFilter] = useState(false);
 
   useEffect(() => {
     const loadSavedItems = async () => {
-      setLoading(true);
+      setLoading(true)
       try {
-        const ids = await getSavedItemIds();
+        const ids = await getSavedItemIds()
         setSavedItems(ids);
       } catch (error) {
         console.error('Error loading saved items:', error);
@@ -90,7 +93,7 @@ const UpcomingEvents = () => {
                 source={
                   item.image
                     ? { uri: item.image }
-                    : require('@/assets/images/placeholder.png')
+                    : require('@/assets/images/miscellaneous/placeholder.png')
                 }
                 style={styles.island}
                 resizeMode="cover"
@@ -113,7 +116,12 @@ const UpcomingEvents = () => {
               <View style={styles.textBox}>
                 <Animated.Text style={styles.textHeader}>{item.name}</Animated.Text>
 
-                <Animated.Text style={styles.textDate}>In {calculateDaysFromNow(item?.date)} days</Animated.Text>
+                <Animated.Text style={styles.textDate}>
+                  {calculateDaysFromNow(item?.date) === 0 ? 'Today' 
+                    : calculateDaysFromNow(item?.date) === 1 ? 'Tomorrow' 
+                    : `In ${calculateDaysFromNow(item?.date)} days`
+                  }
+                </Animated.Text>
               </View>
               
             </View>
@@ -124,22 +132,51 @@ const UpcomingEvents = () => {
   ), [savedItems, toggleSaved]);
 
   const sortedEventsData = eventsData
-  .filter(item => item.date && calculateDaysFromNow(item.date) <= 7)
+  .filter(item => item.date && calculateDaysFromNow(item.date) >= 0 && calculateDaysFromNow(item.date) <= 7 && (likedFilter ? savedItems.includes(item.id) : true))
   .sort((a, b) => calculateDaysFromNow(a.date!) - calculateDaysFromNow(b.date!));
 
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.subheader}>Upcoming</Text>
+        <View>
+          <Text style={styles.subheader}>Upcoming</Text>
+        </View>
+        
+        <View>
+          <TouchableOpacity 
+            onPress={() => {setLikedFilter(!likedFilter), Haptics.impactAsync()}}
+            style={[likedFilter ? styles.categoriesBtnActive : styles.categoriesBtn, { paddingHorizontal: 7.5 }]}
+          >
+            <View style={{flexDirection: 'row', justifyContent: 'space-between', gap: 5}}>
+              <AntDesign name={'hearto'} size={17} color={likedFilter ? '#fff' : Colours.grey}/>
+              <Text 
+                style={likedFilter ? styles.categoryTextActive : styles.categoryText}
+              >
+                Liked
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
-      <FlashList
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={sortedEventsData}
-        renderItem={renderRow}
-        estimatedItemSize={20}
-        extraData={savedItems}
-      />
+      <View style={styles.listContainer}>
+        <FlashList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          data={sortedEventsData}
+          renderItem={renderRow}
+          estimatedItemSize={20}
+          extraData={savedItems}
+          ListEmptyComponent={() => (
+            <View style={styles.emptyContainer}>
+              <Image style={{height: '45%', width: '65%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
+  
+              <Text style={{ fontFamily: 'mon-b', fontSize: 17.5, color: Colours.grey}}>
+                Nothing here to show...
+              </Text>
+            </View>
+          )} 
+        />
+      </View>
     </View>
   );
 };
@@ -148,14 +185,31 @@ const UpcomingEvents = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingBottom: 10,
+  },
+  emptyContainer: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    marginLeft: width / 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 12.5,
+  },
+  listContainer: {
+    flex: 1
   },
   idea: {
     padding: 10,
-    paddingLeft: 15,
+    paddingLeft: 16,
   },
   heading: {
-    justifyContent: 'flex-start',
-    paddingHorizontal: 0,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'baseline',
+    paddingLeft: 2,
+    paddingRight: 15,
+    paddingBottom: 7.5,
   },
   header: {
     fontFamily: 'mon-b',
@@ -165,7 +219,7 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontFamily: 'mon-sb',
-    fontSize: 18,
+    fontSize: 16,
     paddingTop: 10,
     paddingHorizontal: 15,
   },
@@ -220,6 +274,36 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 14,
   },
+  categoryText: {
+    fontSize: 13,
+    fontFamily: 'mon-sb',
+    color: Colours.grey,
+  },
+  categoryTextActive: {
+    fontSize: 13,
+    fontFamily: 'mon-sb',
+    color: '#fff',
+  },
+  categoriesBtn: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 7.5,
+    borderWidth: 1,
+    borderColor: Colours.grey,
+    borderRadius: 25,
+    backgroundColor: '#fff'
+  },
+  categoriesBtnActive: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 7.5,
+    borderWidth: 1,
+    borderColor: '#ff0000',
+    borderRadius: 25,
+    backgroundColor: '#ff0000'
+  }
 });
 
 export default UpcomingEvents;

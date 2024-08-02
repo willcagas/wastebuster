@@ -8,20 +8,25 @@ import SearchHeader from '@/components/redesign/SearchHeader'
 
 const Page = () => {
   const [category, setCategory] = useState('All')
+  const [search, setSearch] = useState('')
   const items = useMemo(() => ideasData as any, [])
 
   const onDataChanged = (category: string) => {
     setCategory(category)
   }
 
+  const onSearchChanged = (text: string) => {
+    setSearch(text)
+  }
+
   return (
     <View style={{ flex: 1 }}> 
         <Stack.Screen 
           options={{
-              header: () => <SearchHeader onCategoryChanged={onDataChanged}/>,
+              header: () => <SearchHeader onCategoryChanged={onDataChanged} onTextChanged={onSearchChanged}/>,
           }}
         />
-        <Ideas ideas={items} category={category}/>
+        <Ideas ideas={items} category={category} search={search}/>
     </View>
   )
 }

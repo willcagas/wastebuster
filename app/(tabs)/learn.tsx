@@ -1,13 +1,11 @@
 import { View, Text } from 'react-native'
 import React from 'react'
-import Events from '@/components/events/Events'
-
-//thistimeitworks.wastebuster
+import Learn from '@/components/learn/Learn'
 
 const Page = () => {
   return (
     <View style={{flex: 1}}>
-      <Events />
+      <Learn />
       
     </View>
   )

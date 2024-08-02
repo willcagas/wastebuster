@@ -73,80 +73,81 @@
       "name": "Something New from Something Old",
       "url": "https://www.pinterest.com/furdude/something-new-from-something-old/",
       "image": "https://imagedelivery.net/0ObHXyjKhN5YJrtuYFSvjQ/i-5b5d1b19-4e24-4188-b05f-5acaca3832d4-Wooden-House-on-a-Vintage-Floral-Bobbin-with-Clay-Daisy-Thimbleville/display",
+      "description": "Pintrest search for neat crafts.",
       "category": "Article"
-      
     },
     {
       "id": 9,
       "name": "Reusable Fabric Gift Bags",
       "url": "https://foodfunfamily.com/diy-reusable-fabric-gift-bags/",
       "image": "https://i1.wp.com/foodfunfamily.com/wp-content/uploads/2014/12/fabric-gift-bags-for-Christmas-2.jpg?w=600&ssl=1",
+      "description": "Several years ago, I got some reusable fabric gift bags, and every holiday and birthday since then I’ve wished that I had more of them. I spend so much time – hours – every Christmas wrapping dozens (hundreds?) of presents for family and friends. I waste so much wrapping paper that ends up being ripped up and thrown out on Christmas morning. It’s a waste and an unnecessary cost...",
       "category": "Article"
-      
     },
     {
       "id": 10,
       "name": "Recycled Craft Ideas",
       "url": "https://www.youtube.com/watch?v=dCcehsudbzg",
+      "description": "4 easy to make recycled craft ideas where we reuse a empty containers, boxes and cola bottles to make new storage organizers and more for home use. This video will make you think once before you throw the empty bottles and boxes.",
       "category": "Videos"
-      
     },
     {
       "id": 11,
       "name": "100 Home Decor Recycling Projects",
       "url": "https://www.diycraftsy.com/recycling-ideas/",
       "image": "https://cdn.diycraftsy.com/wp-content/uploads/2019/09/100-DIY-Home-Decor-Projects-Out-Of-Recycled-Materials.jpg",
+      "description": "You will love recycling and reusing old things and waste materials after seeing these unique recycling ideas for reusing your old stuff. What materials can be recycled, and how are they recycled for home projects? What things we can be made from recycled materials that we can use for DIY home decor projects, crafts and kids projects? Wait!! I’ll explain recycled art here for you. First, try to maintain the good health of the planet by reducing pollution!",
       "category": "Article"
-      
     },
     {
       "id": 12,
       "name": "50 Clever Upcycling Ideas",
       "url": "https://www.personalcreations.com/blog/50-new-uses-for-old-things",
+      "description": "With the passing of the holidays and the start of the New Year, many of us find ourselves wanting to do a little household tidying. Do you have a closet filled with items you no longer use? If you’re like us, it may include things like a box of faded t-shirts, a cache of cassettes with music from the 80s, and a few offbeat tchotchkes rescued from the second-hand store. Before you pull out those garbage bags, take a peek at all of the things you can do with your long-lost treasures. All it takes is a little inspiration to turn these seemingly useless objects into exciting conversation pieces of creativity.",
       "category": "Article"
-      
     },
     {
       "id": 13,
-      "name": "45 Brilliant Repurpose Ideas",
+      "name": "45 Brilliant Ideas to Repurpose Old Things Into Something New",
       "url": "https://www.youtube.com/watch?v=-AsB-80EH7c",
+      "description": "Ideas for repurposing items!",
       "category": "Videos"
     },
     {
       "id": 14,
       "name": "11 Easy & Cute Recycling Ideas",
       "url": "https://www.youtube.com/watch?v=Mh0U0Q9sP8o",
+      "description": "Today, we'll teach you how to turn trash into treasure! It's really cool to recycle and upcycle some old and unnecessary stuff. First of all, it will cost you nothing, secondly, by recycling you make this world better and save our planet. Plastic bottles, plastic spoons and forks, cardboard, paper - all these are good materials for crafting – your possibilities with plastic and paper are truly endless. Learn to make awesome and useful crafts from trash in no time!",
       "category": "Videos"
-      
     },
     {
       "id": 15,
-      "name": "10 DIY Creative Recycling Ideas",
+      "name": "10 DIY Creative Recycling Ideas You Can Do to Help Save the Earth",
       "url": "https://www.youtube.com/watch?v=9bY9jjOdztA",
+      "description": "A lot of things can be recycled, including furniture, decorations and accessories. In one way or another, they can all be used to create a home with tons of character.  Here is a round up of our favorite useful DIY projects using recycled materials.",
       "category": "Videos"
-      
     },
     {
       "id": 16,
       "name": "23 Repurpose Ideas to Organize Your Home",
       "url": "https://www.youtube.com/watch?v=qgLATMSJ5sY",
+      "description": "",
       "category": "Videos"
-      
     },
     {
       "id": 17,
-      "name": "Pop Tab Chainmaille",
+      "name": "Genuine Chainmaille From Pop Tabs",
       "url": "https://www.instructables.com/Genuine-chainmaille-from-pop-tabs/#step1",
       "image": "https://content.instructables.com/FKN/2QWM/FYTCPBKU/FKN2QWMFYTCPBKU.jpg?auto=webp&frame=1&width=933&height=1024&fit=bounds&md=74c13694726c6222dc3cbffd2657a792",
+      "description": "Constructing a genuine European 4 in 1 chainmaille weave using only pop tabs. Turns out this is very easy and makes a really great looking piece of maille, and as an added bonus you don't have to worry about having a quarter mile of wire on hand to attach them together.",
       "category": "Article"
-      
     },
     {
       "id": 18,
-      "name": "3 CUTE & EASY DIY Earrings",
+      "name": "3 Cute & Easy DIY Earrings",
       "url": "https://www.youtube.com/watch?v=FWZ0BhmcaqM",
+      "description": "I'm showing you 3 different diy earrings today, starting from easy to hardest! So excited to show you how I diy'd Moschino's $1620 earrings for only $9!!! ",
       "category": "videos"
-      
     }
   ]
   

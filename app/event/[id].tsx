@@ -3,11 +3,42 @@ import React, { useLayoutEffect } from 'react'
 import { Link, useLocalSearchParams, useNavigation } from 'expo-router'
 import eventData from '@/assets/data/events.json'
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollViewOffset } from 'react-native-reanimated'
-import { Ionicons } from '@expo/vector-icons'
+import { Fontisto, Ionicons, MaterialIcons } from '@expo/vector-icons'
 import { Colours } from '@/constants/Colours'
+import ReadMore from '@fawazahmed/react-native-read-more'
 
 const IMG_HEIGHT = 300
 const { height, width } = Dimensions.get('window')
+
+const formatTimeRange = (isoDateString: string, durationHours: number): string => {
+  const startDate = new Date(isoDateString);
+  const endDate = new Date(startDate.getTime() + durationHours * 60 * 60 * 1000);
+
+  const formatOptions: Intl.DateTimeFormatOptions = {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true
+  };
+
+  const startTime = startDate.toLocaleString('en-US', formatOptions);
+  const endTime = endDate.toLocaleString('en-US', formatOptions);
+
+  return `${startTime} - ${endTime}`;
+}
+
+const formatMonth = (isoDateString: string): string => {
+  const date = new Date(isoDateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'short'
+  });
+}
+
+const formatDay = (isoDateString: string): string => {
+  const date = new Date(isoDateString);
+  return date.toLocaleDateString('en-US', {
+    day: 'numeric'
+  });
+}
 
 const Page = () => {
   const { id } = useLocalSearchParams<{id: string}>()
@@ -53,36 +84,57 @@ const Page = () => {
     }
   })
 
-  const openInstagram = () => {
-    if (event?.instagram) {
-      Linking.openURL(event.instagram)
-    }
-  }
- 
+
   return (
     <View style={styles.container}>
       <Animated.ScrollView ref={scrollRef}
-      scrollEventThrottle={16}
+        scrollEventThrottle={16}
       >
         <Animated.Image source={event.image
                     ? { uri: event.image }
-                    : require('@/assets/images/placeholder.png')} style={[styles.image, imageAnimatedstyle]} />
+                    : require('@/assets/images/miscellaneous/placeholder.png')} style={[styles.image, imageAnimatedstyle]} />
         <View style={styles.infoContainer}>
           <View style={styles.headerRow}>
-            <Text style={styles.name}>{event?.name}</Text>
+            <Text style={[styles.name, {width: '80%'}]}>{event?.name}</Text>
 
-            {event?.instagram && (
-              <TouchableOpacity style={{paddingHorizontal: 20}} onPress={openInstagram}>
-                  <Ionicons name='logo-instagram' size={30} color={'#000'}/> 
-              </TouchableOpacity>
-            )}
+            <View style={styles.productCard}>
+              <Text style={[styles.date]}>{formatMonth(event?.date)}</Text>
+              <Text style={[styles.date, {fontSize: 24}]}>{formatDay(event?.date)}</Text>
+            </View>
           </View>
-          
-          <Text style={styles.description}>{event?.description}</Text>
+            
+          <Text style={[styles.description, {color: '#3A3B3C'}]}>By {event?.organization}</Text>
 
-          <View style={styles.filler} />
+          <View style={styles.details}> 
+            <View style={styles.detailRow}>
+              <MaterialIcons name="location-city" size={24} color={Colours.primary} />
+              <Text style={{fontFamily: 'mon-sb'}}>{event?.location}</Text>
+            </View>
+            
+            <View style={[styles.detailRow, {marginLeft: -2}]}>
+              <Ionicons name="location-sharp" size={26} color={Colours.primary} />
+              <Text style={{fontFamily: 'mon-sb'}}>{event?.address}</Text>
+            </View>
+
+            <View style={[styles.detailRow, {gap: 14}]}>
+              <Fontisto name="clock" size={20} color={Colours.primary} />
+              <Text style={{fontFamily: 'mon-sb'}}>{formatTimeRange(event?.date, event?.duration)}</Text>
+            </View>
+          </View>
+
+          <Text style={styles.subheader}>About</Text>
+
+          <ReadMore numberOfLines={7} seeMoreStyle={styles.seeText} seeLessStyle={styles.seeText} style={[styles.description, {fontSize: 15, color: '#3A3B3C', paddingBottom: 20}]}>
+            {event?.description || "Nothing here yet..."}
+          </ ReadMore>
         </View>
       </Animated.ScrollView>
+      
+      <View style={styles.buttonBottomHeader}>
+        <TouchableOpacity style={styles.resourceButton} onPress={() => Linking.openURL(event?.url)}>
+          <Text style={styles.resourceButtonText}>Register on Website</Text>
+        </TouchableOpacity>
+      </View> 
     </View>
   )
 }
@@ -92,28 +144,60 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  seeText: {
+    fontFamily: 'mon-sb',
+    color: Colours.primary
+  },
+  buttonBottomHeader: {
+    borderTopWidth: StyleSheet.hairlineWidth, 
+    borderTopColor: '#c2c2c2',
+    paddingTop: 25,
+    paddingHorizontal: 15,
+
+    backgroundColor: '#fff', 
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOpacity: 0.12,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 1,
+      height: 1
+    }
+  },
   image: {
     width,
     height: IMG_HEIGHT
   },
+  detailRow: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    gap: 10
+  },
   infoContainer: {
-    padding: 24,
-    backgroundColor: '#fff'
+    padding: 16,
+    backgroundColor: '#fff',
   },
   headerRow: {
     flexDirection: 'row',
-    flex: 1,
     justifyContent: 'space-between',
+    gap: 10
+  },
+  subheader: {
+    fontSize: 22, 
+    marginTop: 25,
+    fontFamily: 'mon-sb',
+    fontWeight: 'bold',
   },
   name: {
-    fontSize: 24,
+    fontSize: 22,
     fontFamily: 'mon-b',
     fontWeight: 'bold',
     marginBottom: 10,
   },
   description: {
     fontSize: 16,
-    marginBottom: 10,
+    marginBottom: 5,
+    marginTop: 10
   },
   bar: {
     flexDirection: 'row',
@@ -132,15 +216,44 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colours.grey
   },
-  filler: {
-    height: 850,
-  },
   header: {
     backgroundColor: '#fff',
     height: height * 0.15,
     borderBottomColor: Colours.grey,
     borderWidth: StyleSheet.hairlineWidth
-  }
+  },
+  date: {
+    fontFamily: 'mon-sb',
+    fontSize: 16,
+    color: '#fff'
+  },
+  productCard: {
+    backgroundColor: Colours.primary,
+    padding: 5,
+    borderRadius: 8,
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+    marginRight: 5,
+    height: 60
+  },
+  details: {
+    marginTop: 5,
+    gap: 10,
+    justifyContent: 'flex-start'
+  },
+  resourceButton: {
+    backgroundColor: Colours.primary,
+    padding: 20,
+    marginBottom: 50,
+    borderRadius: 12.5,
+    alignItems: 'center',
+  },
+  resourceButtonText: {
+    color: 'white',
+    fontFamily: 'mon-b',
+    fontSize: 18,
+  },
 })
 
 export default Page
