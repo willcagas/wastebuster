@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "me-myself.WasteBuster",
-      "buildNumber": "4",
+      "buildNumber": "5",
       "usesAppleSignIn": false
     },
     "android": {

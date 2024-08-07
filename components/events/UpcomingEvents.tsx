@@ -49,10 +49,14 @@ async function removeItemId(id: ItemId): Promise<void> {
 
 const calculateDaysFromNow = (isoDateString: string): number => {
   const targetDate = new Date(isoDateString)
-  const currentDate = new Date();
-  const differenceInMs = targetDate.getTime() - currentDate.getTime();
+  const currentDate = new Date()
 
-  return (Math.ceil(differenceInMs / (1000 * 60 * 60 * 24)) - 1)
+  targetDate.setHours(0, 0, 0, 0)
+  currentDate.setHours(0, 0, 0, 0)
+
+  const differenceInMs = targetDate.getTime() - currentDate.getTime()
+  
+  return Math.floor(differenceInMs / (1000 * 60 * 60 * 24))
 }
 
  
