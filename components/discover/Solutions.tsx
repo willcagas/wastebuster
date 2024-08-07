@@ -138,7 +138,7 @@ const DataScreen = ({ search }:Props) => {
   );
 
   return (
-    <SafeAreaView edges={['bottom']} style={{flex: 1, backgroundColor: '#fff', paddingBottom: 50}}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <FlatList
         data={filteredItems}
         renderItem={renderItem}
@@ -156,7 +156,8 @@ const DataScreen = ({ search }:Props) => {
         )} 
         contentContainerStyle={styles.flatListContent}
       />
-    </SafeAreaView>
+      
+    </View>
   )
 }
 
@@ -168,7 +169,7 @@ const styles = StyleSheet.create({
   flatListContent: {
     flexGrow: 1,
     backgroundColor: '#fff',
-    paddingBottom: 5
+    paddingBottom: 10
   },
   category: {
     flex: 1,

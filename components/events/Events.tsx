@@ -17,7 +17,7 @@ const Events = () => {
   }, [])
 
   return (
-    <SafeAreaView edges={['bottom']} style={{ flex: 1, paddingBottom: 50 }}>
+    <View style={{ flex: 1 }}>
       <ScrollView 
         style={styles.container}
         indicatorStyle="black"  
@@ -34,7 +34,7 @@ const Events = () => {
         <UpcomingEvents />
         <OtherEvents />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   )
 }
 

@@ -50,7 +50,7 @@ const About = () => {
   }))
 
   return (
-    <SafeAreaView edges={['bottom']} style={{ paddingBottom: 49 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <View style={styles.container}>
         <View style={{gap: 20}}>
 
@@ -170,7 +170,7 @@ const About = () => {
       </View>
 
       
-    </SafeAreaView>
+    </View>
     
   )
 }

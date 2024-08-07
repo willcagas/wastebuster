@@ -1,33 +1,31 @@
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Colours } from '@/constants/Colours'
-import { FontAwesome5, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, FontAwesome5, Ionicons, Octicons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import TabBar from '@/components/tab_bar/TabBar';
 
 const Layout = () => {
   return (
-    <Tabs 
-        tabBar={props=> <TabBar {...props} />}
-    >
+    <Tabs screenOptions={{
+        tabBarActiveTintColor: Colours.primary
+    }}>
         <Tabs.Screen 
             name="index" 
             options={{
-                tabBarLabel: 'Discover',
-                headerTitle: 'Discover a solution',
-                headerTitleAlign: 'left',
-                headerTitleStyle: {
-                    fontFamily: 'mon-b',
-                    fontSize: 30
-                },
-                headerShadowVisible: false,
+                tabBarIcon: ({color, size}) => (
+                    <FontAwesome6 name="binoculars" color={color} size={size} />
+                )
             }}
         />
         <Tabs.Screen 
             name="redesign" 
             options={{
                 tabBarLabel: 'Redesign',
+                tabBarIcon: ({color, size}) => (
+                    <Octicons name="paintbrush" color={color} size={size} />
+                )
             }}
         />
         <Tabs.Screen 
@@ -41,6 +39,9 @@ const Layout = () => {
                     fontSize: 30
                 },
                 headerShadowVisible: false,
+                tabBarIcon: ({color, size}) => (
+                    <Ionicons name="earth" color={color} size={size} />
+                )
             }}
         />
         {/* <Tabs.Screen 
@@ -67,6 +68,9 @@ const Layout = () => {
                     fontSize: 30
                 },
                 headerShadowVisible: false,
+                tabBarIcon: ({color, size}) => (
+                    <FontAwesome name="leaf" color={color} size={size} />
+                )
             }}
         />
     </Tabs>

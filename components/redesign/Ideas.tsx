@@ -156,7 +156,7 @@ const Ideas = ({ ideas: items, category, search }: Props) => {
   }, []);
 
   return (
-    <SafeAreaView edges={['bottom']} style={{ flex: 1, paddingBottom: 50, backgroundColor: '#fff' }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
       {filteredItems.length === 0 ? (
         <View style={styles.emptyContainer}>
          <Image style={{height: '35%', width: '50%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
@@ -184,7 +184,7 @@ const Ideas = ({ ideas: items, category, search }: Props) => {
           }
         />
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 
