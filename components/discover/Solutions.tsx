@@ -168,6 +168,7 @@ const styles = StyleSheet.create({
   flatListContent: {
     flexGrow: 1,
     backgroundColor: '#fff',
+    paddingBottom: 5
   },
   category: {
     flex: 1,
@@ -175,13 +176,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 15,
     justifyContent: 'center',
-    borderColor: '#c2c2c2',
+    borderColor: '#e2e2e2',
     borderWidth: StyleSheet.hairlineWidth,
 
     elevation: 2,
     shadowColor: '#000',
     shadowOpacity: 0.12,
-    shadowRadius: 4,
+    shadowRadius: 5,
     shadowOffset: {
       width: 1,
       height: 1

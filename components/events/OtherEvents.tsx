@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff', 
     borderRadius: 20, 
     flexDirection: 'row',
-    borderColor: '#c2c2c2',
+    borderColor: '#e2e2e2',
     borderWidth: StyleSheet.hairlineWidth,
 
     elevation: 2,

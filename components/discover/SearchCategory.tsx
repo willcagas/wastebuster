@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Platform, StatusBar, TextInput } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Platform, StatusBar, TextInput, Image } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { Ionicons, MaterialIcons, MaterialCommunityIcons, FontAwesome5, FontAwesome6, Entypo, FontAwesome, Octicons } from '@expo/vector-icons'
 import { Colours } from '@/constants/Colours'
@@ -24,6 +24,7 @@ const SearchHeader = ({ onCategoryChanged, onTextChanged  }: Props) => {
     <SafeAreaView edges={['top', 'left', 'right']} style={{backgroundColor: '#fff'}}>
       <View style={styles.container}>
         <Text style={styles.header}>Discover</Text>
+        
         <View style={styles.actionRow}>
           <View style={styles.searchBtn}>
             <FontAwesome name='search' size={20} color={Colours.primary} style={{paddingBottom: 1}}/>
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     width: 280,
     padding: 12,
     borderRadius: 30,
-    backgroundColor: '#F0F0F0',
+    backgroundColor: '#F5F5F5',
   
   },
   categoryText: {

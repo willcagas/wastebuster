@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image, ImageSourcePropType, Linking, TextInput } from 'react-native'
+import { View, Text, StyleSheet, Dimensions, TouchableOpacity, Image, ImageSourcePropType, Linking, TextInput, Platform } from 'react-native'
 import React, { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { useLocalSearchParams, useNavigation } from 'expo-router'
 import categoryData from '@/assets/data/categories.json'
 import Animated, { interpolate, useAnimatedRef, useAnimatedStyle, useScrollViewOffset } from 'react-native-reanimated'
 import { Feather, FontAwesome, FontAwesome5, FontAwesome6, Fontisto, Ionicons, MaterialCommunityIcons, MaterialIcons, Octicons } from '@expo/vector-icons'
 import { Colours } from '@/constants/Colours'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps'
 import axios from 'axios'
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
@@ -229,20 +229,42 @@ const Page = () => {
     })
   }, [navigation, isFocused, text, isDropdownVisible])
 
+  
+
   const SymbolKeywordImage = ({ item }: {item: DataItem}) => {
     const symbolKey = item.type.toLowerCase().trim()
     const imageSource = images[symbolKey]
-    
-    if (imageSource) {
-      return <Image source={imageSource} style={selectedPlace === item ? {width: 40, height: 40} : {width: 25, height: 25}}  />;
-    } else {
-      console.error(`No image found for Symbol Keyword: "${item.type}"`);
-      return (
-        <View style={{width: 20, height: 20, backgroundColor: 'red'}}>
-          <Text style={{fontSize: 10, color: 'white'}}>!</Text>
+    const isSelected = selectedPlace === item
+  
+    return imageSource ? (
+      <View style={styles.markerContainer}>
+        <Image 
+          source={require('@/assets/images/miscellaneous/marker.png')}  
+          style={{ 
+            width: isSelected ? 70: 50,
+            height: isSelected ? 65: 45,
+            resizeMode: 'contain',tintColor: markerColours[item.type.toLowerCase().trim()], 
+          }}  
+        />
+        <View 
+          style={[
+            styles.markerIconContainer,
+            {
+              backgroundColor: markerColours[item.type.toLowerCase().trim()],
+              borderRadius: 20,
+            }
+          ]}
+        >
+          <Image 
+            source={imageSource} 
+            style={{
+              width: isSelected ? 32 : 20,
+              height: isSelected ? 32 : 20,
+            }}  
+          />
         </View>
-      )
-    }
+      </View>
+    ) : null
   }
 
   const animateRegion = ({lat, long, openSheet}: {lat: number, long: number, openSheet: boolean}) => {
@@ -267,6 +289,7 @@ const Page = () => {
           ref={mapRef}
           style={styles.map}
           region={mapRegion}
+          provider={Platform.OS === 'ios' ? PROVIDER_DEFAULT : PROVIDER_GOOGLE}
         >
           {Object.values(data.reduce((acc: {[key: string]: DataItem}, item) => {
             const key = `${item.latitude},${item.longitude}`
@@ -299,16 +322,10 @@ const Page = () => {
                       ? 1 
                       : 0
                 }}
+                anchor={{ x: 0.5, y: -20 }} // Google Maps
+                centerOffset={{ x: 0.0, y: -20}} // Apple Maps
               >
-                <View 
-                  style={
-                    selectedPlace === item 
-                      ? [styles.markerBtn, { backgroundColor: markerColours[item.type.toLowerCase().trim()], borderRadius: 30 }] 
-                      : [styles.markerBtn, { backgroundColor: markerColours[item.type.toLowerCase().trim()] }]
-                  }
-                >
-                  <SymbolKeywordImage item={item} />
-                </View>
+                <SymbolKeywordImage item={item} />
               </Marker>
             )
           })}
@@ -436,7 +453,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     color: Colours.primary,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colours.grey
+    borderColor: Colours.primary
   },
   searchBtn: {
     flexDirection: 'row',
@@ -451,17 +468,16 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: Colours.grey
   },
-  markerBtn: {
-    borderRadius: 20,
-    padding: 3,
-    elevation: 2,
-    shadowColor: '#000',
-    shadowOpacity: 0.12,
-    shadowRadius: 8,
-    shadowOffset: {
-      width: 1,
-      height: 1,
-    },
+  markerContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'relative',
+  },
+  markerIconContainer: {
+    position: 'absolute',
+    top: 8.25, 
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   firstRow: {
     flex: 1,
@@ -471,7 +487,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: StyleSheet.hairlineWidth,
-    backgroundColor: '#E0E0E0', 
+    backgroundColor: '#E2E0E0', 
     right: 0, 
     width: '95%', 
     alignSelf: 'center'
@@ -534,7 +550,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     borderWidth: StyleSheet.hairlineWidth,
-    borderColor: Colours.grey,
+    borderColor: '#e2e2e2',
     zIndex: 1000,
   },
   dropdownSection: {
@@ -552,8 +568,8 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 7.5,
-    borderBottomWidth: 1,
-    borderBottomColor: Colours.grey,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: '#e2e2e2'
   },
 })
 

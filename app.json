@@ -2,7 +2,7 @@
   "expo": {
     "name": "WasteBuster",
     "slug": "wastebuster",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/miscellaneous/app_icon.png",
     "scheme": "myapp",
@@ -10,11 +10,13 @@
     "splash": {
       "image": "./assets/images/miscellaneous/splash_screen.png",
       "resizeMode": "contain",
-      "backgroundColor": "#018749"
+      "backgroundColor": "#fff"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.williamcagas.wastebuster"
+      "bundleIdentifier": "me-myself.WasteBuster",
+      "buildNumber": "3",
+      "usesAppleSignIn": false
     },
     "android": {
       "adaptiveIcon": {

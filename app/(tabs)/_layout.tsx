@@ -43,7 +43,7 @@ const Layout = () => {
                 headerShadowVisible: false,
             }}
         />
-        <Tabs.Screen 
+        {/* <Tabs.Screen 
             name="learn" 
             options={{
                 tabBarLabel: 'Learn',
@@ -55,7 +55,7 @@ const Layout = () => {
                 },
                 headerShadowVisible: false,
             }}
-        />
+        /> */}
         <Tabs.Screen 
             name="more" 
             options={{

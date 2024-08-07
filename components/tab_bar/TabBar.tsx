@@ -81,7 +81,8 @@ const styles = StyleSheet.create<Styles>({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    
+    borderTopWidth: StyleSheet.hairlineWidth,
+    borderTopColor: '#e2e2e2'
   }
 })
 
