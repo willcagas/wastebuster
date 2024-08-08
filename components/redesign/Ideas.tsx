@@ -102,7 +102,7 @@ const Ideas = ({ ideas: items, category, search }: Props) => {
                   ? { uri: `https://img.youtube.com/vi/${item.url.split("v=")[1]}/0.jpg` }
                   : item.image
                     ? { uri: item.image }
-                    : require('@/assets/images/miscellaneous/placeholder.png')
+                    : require('@/assets/images/miscellaneous/noimage.png')
                 }
                 style={styles.image}
                 resizeMode="cover"

@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, ScrollView, Linking,TouchableOpacity, Image } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Linking,TouchableOpacity, Image, Dimensions } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { AntDesign, Feather, FontAwesome, FontAwesome5, Ionicons } from '@expo/vector-icons'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colours } from '@/constants/Colours'
 import Animated, { useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
+
+const { height, width } = Dimensions.get('window')
 
 const About = () => {
   const [expandedGreenVenture, setExpandedGreenVenture] = useState<boolean>(false)
@@ -155,9 +157,12 @@ const About = () => {
 
         <View style={styles.separator} />
 
-        <Text style={styles.creditText}>
-          Made with ❤ by William Cagas
-        </Text>
+        <View style={{marginTop: height * 0.25, alignItems: 'center'}}>
+          <Text style={styles.creditText}>
+            Made with ❤ by William Cagas
+          </Text>
+        </View>
+        
 
       </View>
     </View>
@@ -167,19 +172,15 @@ const About = () => {
 
 const styles = StyleSheet.create({
   creditText: {
-    position: 'absolute',
-    bottom: 20,
     fontFamily: 'mon-sb', 
     fontSize: 13,
-    alignSelf: 'center',
     color: Colours.grey,
   },
   container: {
-    flex: 1,
-    height: '100%',
-    width: '100%',
+    flexGrow: 1,
     backgroundColor: '#fff',
     paddingHorizontal: 15,
+    paddingVertical: 10,
     gap: 20
   },
   header: {
