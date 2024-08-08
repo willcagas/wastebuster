@@ -1,4 +1,4 @@
-import { View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import React from 'react'
 import { Stack } from 'expo-router'
 import Ideas from '@/components/redesign/Ideas'
@@ -21,6 +21,7 @@ const Page = () => {
 
   return (
     <View style={{ flex: 1 }}> 
+        <StatusBar barStyle={"dark-content"}/>
         <Stack.Screen 
           options={{
               header: () => <SearchHeader onCategoryChanged={onDataChanged} onTextChanged={onSearchChanged}/>,

@@ -14,17 +14,20 @@ const Layout = () => {
         <Tabs.Screen 
             name="index" 
             options={{
-                tabBarIcon: ({color, size}) => (
-                    <FontAwesome6 name="binoculars" color={color} size={size} />
+                tabBarShowLabel: false,
+                tabBarLabel: 'Discover',
+                tabBarIcon: ({color}) => (
+                    <FontAwesome6 name="binoculars" color={color} size={31} />
                 )
             }}
         />
         <Tabs.Screen 
             name="redesign" 
             options={{
+                tabBarShowLabel: false,
                 tabBarLabel: 'Redesign',
-                tabBarIcon: ({color, size}) => (
-                    <Octicons name="paintbrush" color={color} size={size} />
+                tabBarIcon: ({color}) => (
+                    <Octicons name="paintbrush" color={color} size={30} />
                 )
             }}
         />
@@ -32,6 +35,7 @@ const Layout = () => {
             name="events" 
             options={{
                 tabBarLabel: 'Events',
+                tabBarShowLabel: false,
                 headerTitle: 'Events',
                 headerTitleAlign: 'left',
                 headerTitleStyle: {
@@ -39,8 +43,8 @@ const Layout = () => {
                     fontSize: 30
                 },
                 headerShadowVisible: false,
-                tabBarIcon: ({color, size}) => (
-                    <Ionicons name="earth" color={color} size={size} />
+                tabBarIcon: ({color}) => (
+                    <Ionicons name="earth" color={color} size={35} />
                 )
             }}
         />
@@ -61,6 +65,7 @@ const Layout = () => {
             name="more" 
             options={{
                 tabBarLabel: 'More',
+                tabBarShowLabel: false,
                 headerTitle: 'More',
                 headerTitleAlign: 'left',
                 headerTitleStyle: {
@@ -68,8 +73,8 @@ const Layout = () => {
                     fontSize: 30
                 },
                 headerShadowVisible: false,
-                tabBarIcon: ({color, size}) => (
-                    <FontAwesome name="leaf" color={color} size={size} />
+                tabBarIcon: ({color}) => (
+                    <FontAwesome name="leaf" color={color} size={33} />
                 )
             }}
         />

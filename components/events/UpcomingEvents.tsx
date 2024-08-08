@@ -55,7 +55,7 @@ const calculateDaysFromNow = (isoDateString: string): number => {
   currentDate.setHours(0, 0, 0, 0)
 
   const differenceInMs = targetDate.getTime() - currentDate.getTime()
-  
+
   return Math.floor(differenceInMs / (1000 * 60 * 60 * 24))
 }
 

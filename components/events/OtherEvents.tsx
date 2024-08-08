@@ -128,7 +128,10 @@ const UpcomingEvents = () => {
               </View>              
 
               <Animated.Image
-                source={item?.organization === "Green Venture" && require('@/assets/images/miscellaneous/placeholder.png')}
+                source={
+                  item?.organization === "Green Venture" && require('@/assets/images/miscellaneous/placeholder.png')
+                  || item?.organization === "Hamilton Naturalists' Club" && require('@/assets/images/miscellaneous/HNCLogo.png')
+                }
                 style={styles.logo}
                 resizeMode="cover"
               />
@@ -297,8 +300,9 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   logo: {
-    width: 55,
-    height: 30,
+    flex: 1,
+    width: 62.5,
+    height: 37.5,
     resizeMode: 'contain',
     position: 'absolute',
     bottom: '7.5%',
