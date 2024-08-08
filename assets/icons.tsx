@@ -14,6 +14,6 @@ export const icons: IconsType = {
   index: (props: IconProps) => <FontAwesome6 name="binoculars" size={26} {...props} />,
   redesign: (props: IconProps) => <Octicons name="paintbrush" size={26} {...props} />,
   events: (props: IconProps) => <Ionicons name="earth" size={26} {...props} />,
-  // learn: (props: IconProps) => <FontAwesome5 name="lightbulb" size={26} {...props} />,
+  learn: (props: IconProps) => <FontAwesome5 name="lightbulb" size={26} {...props} />,
   more: (props: IconProps) => <FontAwesome name="leaf" size={26} {...props} />,
 }

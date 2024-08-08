@@ -160,7 +160,6 @@ const About = () => {
           Made with ❤ by William Cagas
         </Text>
 
-        
       </View>
     </View>
     

@@ -52,6 +52,7 @@ const Layout = () => {
             name="learn" 
             options={{
                 tabBarLabel: 'Learn',
+                tabBarShowLabel: false,
                 headerTitle: 'Learn',
                 headerTitleAlign: 'left',
                 headerTitleStyle: {
@@ -59,6 +60,9 @@ const Layout = () => {
                     fontSize: 30
                 },
                 headerShadowVisible: false,
+                tabBarIcon: ({color}) => (
+                    <FontAwesome5 name="lightbulb" color={color} size={35} />
+                )
             }}
         /> */}
         <Tabs.Screen 

@@ -60,12 +60,12 @@ const Ideas = ({ ideas: items, category, search }: Props) => {
     const loadSavedItems = async () => {
       setLoading(true);
       try {
-        const ids = await getSavedItemIds();
-        setSavedItems(ids);
+        const ids = await getSavedItemIds()
+        setSavedItems(ids)
       } catch (error) {
-        console.error('Error loading saved items:', error);
+        console.error('Error loading saved items:', error)
       } finally {
-        setLoading(false);
+        setLoading(false)
       }
     };
 
@@ -74,12 +74,12 @@ const Ideas = ({ ideas: items, category, search }: Props) => {
 
   const filteredItems = useMemo(() => 
     items.filter(item => {
-      const nameMatch = item.name?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false;
-      const descriptionMatch = item.description?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false;
-      const categoryMatch = category === 'All' || item.category === category;
-      const isSaved = savedItems.includes(item.id);
+      const nameMatch = item.name?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false
+      const descriptionMatch = item.description?.toLowerCase().includes(search?.toLowerCase() ?? '') ?? false
+      const categoryMatch = category === 'All' || item.category === category
+      const isSaved = savedItems.includes(item.id)
   
-      return (nameMatch || descriptionMatch) && (categoryMatch || isSaved);
+      return (nameMatch || descriptionMatch) && (categoryMatch || isSaved && category === 'Saved')
     }),
     [items, category, savedItems, search]
   )

@@ -137,19 +137,19 @@ const Page = () => {
 
   useEffect(() => {
     const getLocation = async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
-      if (status !== "granted") {
+      try {
+        let { status } = await Location.requestForegroundPermissionsAsync()
+
+        let location = await Location.getCurrentPositionAsync({})
+
+        setUserLocation({
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        })
+      } catch {
         console.log("Permission to access location was denied");
         return;
       }
-
-      let location = await Location.getCurrentPositionAsync({})
-
-      setUserLocation({
-        latitude: location.coords.latitude,
-        longitude: location.coords.longitude,
-      })
-
     }
 
     getLocation();

@@ -2,7 +2,6 @@ import { Colours } from '@/constants/Colours';
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, RefreshControl, Linking } from 'react-native';
 
-// Define types for data
 interface EcoProduct {
   name: string;
   description: string;
@@ -19,29 +18,24 @@ interface Quiz {
   questions: number;
 }
 
-// Sample data
 const ecoFacts: string[] = [
   "Recycling one aluminum can saves enough energy to run a TV for three hours.",
   "A single tree can absorb 10 pounds of air pollutants a year.",
-  // ... more facts
-];
-
-const ecoProducts: EcoProduct[] = [
-  { name: "Bamboo Toothbrush", description: "Biodegradable alternative to plastic toothbrushes." },
-  { name: "Reusable Water Bottle", description: "Reduces plastic waste from single-use bottles." },
-  // ... more products
-];
+]
 
 const guides: Guide[] = [
   { title: "A Beginner’s Guide to Zero Waste in Hamilton", snippet: "The term ‘zero waste’ is frequently thrown around as a buzzword online but what does it actually mean?", link: "https://greenventure.ca/a-beginners-guide-to-zero-waste-in-hamilton/" },
   { title: "All About Waste in the Fashion Industry", snippet: "Explore fast fashion and it's effects", link: "https://greenventure.ca/all-about-waste-in-the-fashion-industry/"},
-  // ... more guides
+];
+
+const plans: Guide[] = [
+  { title: "A Beginner’s Guide to Zero Waste in Hamilton", snippet: "The term ‘zero waste’ is frequently thrown around as a buzzword online but what does it actually mean?", link: "https://greenventure.ca/a-beginners-guide-to-zero-waste-in-hamilton/" },
+  { title: "All About Waste in the Fashion Industry", snippet: "Explore fast fashion and it's effects", link: "https://greenventure.ca/all-about-waste-in-the-fashion-industry/"},
 ];
 
 const quizzes: Quiz[] = [
   { title: "Recycling Basics", questions: 10 },
   { title: "Climate Change Facts", questions: 15 },
-  // ... more quizzes
 ];
 
 const LearnTab: React.FC = () => {
@@ -58,9 +52,8 @@ const LearnTab: React.FC = () => {
   }, [])
 
   useEffect(() => {
-    // Set random fact and product on component mount
+    
     setFact(ecoFacts[Math.floor(Math.random() * ecoFacts.length)]);
-    setProduct(ecoProducts[Math.floor(Math.random() * ecoProducts.length)]);
   }, []);
 
   return (
@@ -92,6 +85,17 @@ const LearnTab: React.FC = () => {
       ))}
 
       <View style={styles.separator} />
+
+      <Text style={styles.sectionTitle}>Environmental Plans & Strategies</Text>
+      {plans.map((plan, index) => (
+        <TouchableOpacity key={index} style={styles.guideItem} onPress={() => Linking.openURL(plan.link)}> 
+          <Text style={styles.guideTitle}>{plan.title}</Text>
+          <Text style={styles.guideSnippet}>{plan.snippet}</Text>
+        </TouchableOpacity>
+      ))}
+
+      <View style={styles.separator} />
+
 
       <Text style={styles.sectionTitle}>Eco-Quizzes</Text>
       {quizzes.map((quiz, index) => (
@@ -178,6 +182,6 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
   },
-});
+})
 
-export default LearnTab;
+export default LearnTab
