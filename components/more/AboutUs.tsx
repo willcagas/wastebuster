@@ -33,7 +33,7 @@ const About = () => {
     if (expandedWasteBuster) {
       heightWasteBuster.value = withTiming(0, { duration: 300 });
     } else {
-      heightWasteBuster.value = withTiming(250, { duration: 300 }); 
+      heightWasteBuster.value = withTiming(275, { duration: 300 }); 
 
       if (expandedGreenVenture) {
         setExpandedGreenVenture(!expandedGreenVenture)
@@ -54,116 +54,121 @@ const About = () => {
   return (
     <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <View style={styles.container}>
-        <View style={[styles.separator, {marginTop: 15}]} />
+        <View style={{ gap: 20 }}>
+          <View style={{ marginTop: 5 }}>
+            <TouchableOpacity style={styles.button} onPress={toggleExpandWasteBuster}>
+              <View style={styles.innerButton}>
+                <FontAwesome name="question-circle-o" size={24} color={Colours.primary} />
+                <Text style={styles.subheader}>About WasteBuster</Text>
+              </View>
+              
+              <Feather name={expandedWasteBuster ? "arrow-up" : "arrow-right"} size={20} color='black'/>
+            </TouchableOpacity>
 
-        <View >
-          <TouchableOpacity style={styles.button} onPress={toggleExpandWasteBuster}>
-            <View style={styles.innerButton}>
-              <FontAwesome name="question-circle-o" size={26} color={Colours.primary} />
-              <Text style={styles.subheader}>About WasteBuster</Text>
+            <ScrollView >
+              <Animated.View style={[styles.animatedContainer, animatedStyleWasteBuster]}>
+                <Text style={[styles.description, {marginTop: 15}]}>
+                  WasteBuster was first made by coop students Kevin and Afra,
+                  with the solution database made by grade 7/8 students from Spring Valley Elementary School.
+                  It has now been fully redeveloped & redesigned by William.
+                </Text>
+
+                <Text style={styles.description}>
+                  It aims to address the worsening issue of overconsumption by helping people in the Hamilton 
+                  region find accessible circular solutions for their unwanted items, creating a circular economy.
+                </Text>
+
+                <Text style={styles.description}>
+                  Please use it often and share the message about circular economy and why it matters. 
+                  We all need to contribute to keep our planet healthy and sustainable. Thank you!
+                </Text>
+              </Animated.View>
+              
+            </ScrollView>
+          </View>
+
+          <View style={styles.separator} />
+
+          <View>
+            <TouchableOpacity style={styles.button} onPress={toggleExpandGreenVenture}>
+              <View style={styles.innerButton}>
+                <FontAwesome name="question-circle-o" size={24} color={Colours.primary} />
+                <Text style={styles.subheader}>About Green Venture</Text>
+              </View>
+              
+              <Feather name={expandedGreenVenture ? "arrow-up" : "arrow-right"} size={20} color='black'/>
+            </TouchableOpacity>
+
+            <ScrollView >
+              <Animated.View style={[styles.animatedContainer, animatedStyleGreenVenture]}>
+                <Text style={[styles.description, {marginTop: 15}]}>
+                  Green Venture is Hamilton, Ontario's environmental nonprofit dedicated to helping residents 
+                  live more sustainably at home, at work, and in their daily lives.
+                </Text>
+
+                <Text style={styles.description}>
+                  Our mandate is to empower Hamiltonians to implement greener practices in their homes and communities
+                  to make our city a climate champ.
+                </Text>
+              </Animated.View>
+            </ScrollView>
+            
+          </View>
+
+          <View style={styles.separator} />
+
+          <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(`tel:9055408787`)}>
+            <View style={[styles.innerButton, {gap: 10.5}]}>
+              <FontAwesome5 name="phone-alt" size={20} color={Colours.primary} />
+              <Text style={styles.subheader}>
+                Contact us <Text style={{color: Colours.primary}}>(905) 540-8787</Text>
+              </Text>
             </View>
             
-            <Feather name={expandedWasteBuster ? "arrow-up" : "arrow-right"} size={20} color='black'/>
+            <Feather name="arrow-right" size={20} color="black"/>
           </TouchableOpacity>
 
-          <Animated.View style={[styles.animatedContainer, animatedStyleWasteBuster]}>
-            <Text style={[styles.description, {marginTop: 15}]}>
-              WasteBuster's first version was created by coop students Kevin and Afra,
-              with a database created by grade 7-8 students from Spring Valley Elementary School. 
-            </Text>
+          <View style={styles.separator} />
 
-            <Text style={styles.description}>
-              It aims address the worsening issue of overconsumption by helping people in the Hamilton 
-              region find accessible circular solutions for their unwanted items to create a circular economy.
-            </Text>
-
-            <Text style={styles.description}>
-              Please use it often and share the message about circular economy and why it matters. 
-              We all need to contribute to keep our planet healthy and sustainable. Thank you!
-            </Text>
-          </Animated.View>
-        </View>
-
-        <View style={styles.separator} />
-
-        <View>
-          <TouchableOpacity style={styles.button} onPress={toggleExpandGreenVenture}>
-            <View style={styles.innerButton}>
-              <FontAwesome name="question-circle-o" size={26} color={Colours.primary} />
-              <Text style={styles.subheader}>About Green Venture</Text>
+          <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://greenventure.ca/')}>
+            <View style={[styles.innerButton, {gap: 8}]}>
+              <Ionicons name="globe-outline" size={24} color={Colours.primary} />
+              <Text style={styles.subheader}>Check us out <Text style={{color: Colours.primary}}>greenventure.ca</Text></Text>
             </View>
             
-            <Feather name={expandedGreenVenture ? "arrow-up" : "arrow-right"} size={20} color='black'/>
+            <Feather name="arrow-right" size={20} color='black'/>
           </TouchableOpacity>
 
-          <Animated.View style={[styles.animatedContainer, animatedStyleGreenVenture]}>
-            <Text style={[styles.description, {marginTop: 15}]}>
-              Green Venture is Hamilton, Ontario's environmental nonprofit dedicated to helping residents 
-              live more sustainably at home, at work, and in their daily lives.
-            </Text>
+          <View style={styles.separator} />
 
-            <Text style={styles.description}>
-              Our mandate is to empower Hamiltonians to implement greener practices in their homes and communities
-              to make our city a climate champion.
-            </Text>
-          </Animated.View>
+          <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://www.instagram.com/green_venture/')}>
+            <View style={styles.innerButton}>
+              <AntDesign name="instagram" size={23.5} color={Colours.primary} />
+              <Text style={styles.subheader}>Follow our IG <Text style={{color: Colours.primary}}>@green_venture</Text></Text>
+            </View>
+            
+            <Feather name="arrow-right" size={20} color='black'/>
+          </TouchableOpacity>
+
+          <View style={styles.separator} />
+
+          <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://www.tiktok.com/@green_venture')}>
+            <View style={[styles.innerButton, {gap: 12.5}]}>
+              <FontAwesome5 name="tiktok" size={22} color={Colours.primary} />
+              <Text style={styles.subheader}>See our TikTok <Text style={{color: Colours.primary}}>@green_venture</Text></Text>
+            </View>
+            
+            <Feather name="arrow-right" size={20} color='black'/>
+          </TouchableOpacity>
+
+          <View style={styles.separator} />
         </View>
 
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.button} onPress={() => Linking.openURL(`tel:9055408787`)}>
-          <View style={styles.innerButton}>
-            <FontAwesome5 name="phone-alt" size={22} color={Colours.primary} />
-            <Text style={styles.subheader}>
-              Contact us <Text style={{color: Colours.primary}}>(905) 540-8787</Text>
-            </Text>
-          </View>
-          
-          <Feather name="arrow-right" size={20} color="black"/>
-        </TouchableOpacity>
-
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://greenventure.ca/')}>
-          <View style={styles.innerButton}>
-            <Ionicons name="globe-outline" size={25} color={Colours.primary} />
-            <Text style={styles.subheader}>Check us out <Text style={{color: Colours.primary}}>greenventure.ca</Text></Text>
-          </View>
-          
-          <Feather name="arrow-right" size={20} color='black'/>
-        </TouchableOpacity>
-
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://www.instagram.com/green_venture/')}>
-          <View style={styles.innerButton}>
-            <AntDesign name="instagram" size={24} color={Colours.primary} />
-            <Text style={styles.subheader}>Follow our IG <Text style={{color: Colours.primary}}>@green_venture</Text></Text>
-          </View>
-          
-          <Feather name="arrow-right" size={20} color='black'/>
-        </TouchableOpacity>
-
-        <View style={styles.separator} />
-
-        <TouchableOpacity style={styles.button} onPress={() => Linking.openURL('https://www.tiktok.com/@green_venture')}>
-          <View style={[styles.innerButton, {gap: 12.5}]}>
-            <FontAwesome5 name="tiktok" size={24} color={Colours.primary} />
-            <Text style={styles.subheader}>See our TikTok <Text style={{color: Colours.primary}}>@green_venture</Text></Text>
-          </View>
-          
-          <Feather name="arrow-right" size={20} color='black'/>
-        </TouchableOpacity>
-
-        <View style={styles.separator} />
-
-        <View style={{marginTop: height * 0.25, alignItems: 'center'}}>
+        <View style={{ alignItems: 'center', marginBottom: 10}}>
           <Text style={styles.creditText}>
             Made with ❤ by William Cagas
           </Text>
         </View>
-        
-
       </View>
     </View>
     
@@ -181,7 +186,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 15,
     paddingVertical: 10,
-    gap: 20
+    justifyContent: 'space-between'
   },
   header: {
     fontFamily: 'mon-b',
@@ -189,7 +194,7 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontFamily: 'mon-sb',
-    fontSize: 16
+    fontSize: 15
   },
   separator: {
     height: StyleSheet.hairlineWidth,
@@ -199,8 +204,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   animatedContainer: {
-    overflow: 'hidden',
-    gap: 15
+    gap: 10,
   },
   description: {
     fontFamily: 'mon',

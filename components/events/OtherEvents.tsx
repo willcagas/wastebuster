@@ -1,6 +1,5 @@
 import { View, Text, Linking, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
 import React, { useEffect, useState, useCallback } from 'react';
-import eventsData from '@/assets/data/events.json';
 import { FlashList } from '@shopify/flash-list';
 import Animated from 'react-native-reanimated';
 import { Colours } from '@/constants/Colours';
@@ -8,6 +7,26 @@ import * as Haptics from 'expo-haptics';
 import { AntDesign, MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
+import axios from 'axios';
+
+interface Props {
+  refresh: boolean
+}
+
+interface DataItem {
+  id: number,
+  name: string,
+  description: string,
+  organization: string,
+  date: string,
+  duration: number,
+  type: string,
+  location: string,
+  address: string,
+  image: string,
+  url: string,
+  [key: string]: string | number
+}
 
 type ItemId = string | number;
 
@@ -64,27 +83,34 @@ const formatDate = (isoDateString: string): string => {
   });
 }
 
- 
-const UpcomingEvents = () => {
+const UpcomingEvents = ( {refresh}: Props) => {
   const [loading, setLoading] = useState(false);
   const [savedItems, setSavedItems] = useState<ItemId[]>([])
   const [likedFilter, setLikedFilter] = useState(false)
+  const [data, setData] = useState<DataItem[]>([])
+
+  const fetchDataAndLoadSavedItems = async () => {
+    setLoading(true);
+    try {
+      const [response, savedIds] = await Promise.all([
+        axios.get<DataItem[]>('https://raw.githubusercontent.com/willcagas/wastebuster-public-database/main/public-events.json'),
+        getSavedItemIds()
+      ]);
+
+      setData(response.data);
+      setSavedItems(savedIds);
+    } catch (error) {
+      console.error('Error fetching data or loading saved items:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadSavedItems = async () => {
-      setLoading(true);
-      try {
-        const ids = await getSavedItemIds();
-        setSavedItems(ids);
-      } catch (error) {
-        console.error('Error loading saved items:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchDataAndLoadSavedItems();
 
-    loadSavedItems();
-  }, []);
+    console.log('loading')
+  }, [refresh])
 
   const toggleSaved = async (id: ItemId) => {
     savedItems.includes(id)
@@ -142,7 +168,7 @@ const UpcomingEvents = () => {
     </View>
   ), [savedItems, toggleSaved]);
 
-  const sortedEventsData = eventsData
+  const sortedEventsData = data
   .filter(item => item.date && calculateDaysFromNow(item.date) > 7 && (likedFilter ? savedItems.includes(item.id) : true))
   .sort((a, b) => calculateDaysFromNow(a.date!) - calculateDaysFromNow(b.date!));
 
@@ -176,13 +202,15 @@ const UpcomingEvents = () => {
           renderItem={renderRow}
           estimatedItemSize={20}
           ListEmptyComponent={() => (
-            <View style={styles.emptyContainer}>
-              <Image style={{height: '50%', width: '30%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
-  
-              <Text style={{ fontFamily: 'mon-b', fontSize: 15, color: Colours.grey}}>
-                Nothing here to show...
-              </Text>
-            </View>
+            loading === false ? (
+              <View style={styles.emptyContainer}>
+                <Image style={{height: '50%', width: '30%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
+    
+                <Text style={{ fontFamily: 'mon-b', fontSize: 15, color: Colours.grey}}>
+                  Nothing here to show...
+                </Text>
+              </View>
+            ) : null
           )} 
       />
     </View>
@@ -196,9 +224,10 @@ const styles = StyleSheet.create({
   emptyContainer: {
     flex: 1,
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
-    height: 250
+    height: 225,
+    gap: 10,
+    marginTop: 30
   },
   otherContainer: {
     backgroundColor: '#fff', 
@@ -285,19 +314,19 @@ const styles = StyleSheet.create({
   },
   textBox: {
     paddingLeft: 7.5,
-    width: '55%',
-    top: '3%'
+    width: '50%',
+    top: '3%',
   },
   textHeader: {
     fontFamily: 'mon-b',
     color: '#000',
-    fontSize: 12.25,
+    fontSize: 12.75,
   },
   textDate: {
     fontFamily: 'mon-sb',
-    paddingTop: 5,
-    color: Colours.grey,
-    fontSize: 14,
+    paddingTop: 7.5,
+    color: Colours.primary,
+    fontSize: 12.5,
   },
   logo: {
     flex: 1,

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tabs } from 'expo-router'
 import { Colours } from '@/constants/Colours'
-import { FontAwesome, FontAwesome5, Ionicons, Octicons } from '@expo/vector-icons';
+import { Entypo, FontAwesome, FontAwesome5, Ionicons, Octicons } from '@expo/vector-icons';
 import { FontAwesome6 } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import TabBar from '@/components/tab_bar/TabBar';
@@ -78,7 +78,7 @@ const Layout = () => {
                 },
                 headerShadowVisible: false,
                 tabBarIcon: ({color}) => (
-                    <FontAwesome name="leaf" color={color} size={33} />
+                    <Entypo name="dots-three-horizontal" color={color} size={30} />
                 )
             }}
         />

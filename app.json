@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "me-myself.WasteBuster",
-      "buildNumber": "6",
+      "buildNumber": "8",
       "usesAppleSignIn": false
     },
     "android": {
@@ -35,7 +35,7 @@
       [
         "expo-location",
         {
-          "locationAlwaysAndWhenInUsePermission": "Show your location in comparison to other circular solutions around you."
+          "locationWhenInUsePermission": "Shows your location compared to circular solutions around you."
         }
       ]
     ],

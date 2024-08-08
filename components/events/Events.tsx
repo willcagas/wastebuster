@@ -5,7 +5,7 @@ import OtherEvents from '@/components/events/OtherEvents'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { Colours } from '@/constants/Colours'
 
-const Events = () => {
+const Events = ( ) => {
   const [refreshing, setRefreshing] = useState<boolean>(false)
 
   // REFRESH
@@ -31,8 +31,8 @@ const Events = () => {
           />
         }
       >
-        <UpcomingEvents />
-        <OtherEvents />
+        <UpcomingEvents refresh={refreshing}/>
+        <OtherEvents refresh={refreshing}/>
       </ScrollView>
     </View>
   )

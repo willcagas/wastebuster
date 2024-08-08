@@ -13,7 +13,6 @@ import * as Clipboard from 'expo-clipboard';
 import * as Haptics from 'expo-haptics'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import * as Location from 'expo-location'
-import { Picker } from '@react-native-picker/picker';
 
 
 const IMG_HEIGHT = 300
@@ -96,8 +95,8 @@ const Page = () => {
   const [mapRegion, setMapRegion] = useState({
     latitude: 43.2557,
     longitude: -79.8711,
-    latitudeDelta: 0.175,
-    longitudeDelta: 0.175,
+    latitudeDelta: 0.25,
+    longitudeDelta: 0.25,
   })
   const [userLocation, setUserLocation] = useState<{ latitude: number | null, longitude: number | null }>({
     latitude: null,
@@ -181,7 +180,8 @@ const Page = () => {
 
   const [filterValues, setFilterValues] = useState({
     option1: ['Reuse', 'Recycle', 'Recover', 'Redesign', 'Refill', 'Refurbish', 'Remanufacturing', 'Repair', 'Resell', 'Borrow'],
-  });
+  })
+
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const toggleDropdown = () => {
@@ -322,8 +322,8 @@ const Page = () => {
                       ? 1 
                       : 0
                 }}
-                anchor={{ x: 0.5, y: -20 }} // Google Maps
-                centerOffset={{ x: 0.0, y: -20}} // Apple Maps
+                anchor={ selectedPlace === item ? { x: 0.5, y: -30 } :  { x: 0.5, y: -20 } } // Google Maps
+                centerOffset={selectedPlace === item ? { x: 0.5, y: -30 } :  { x: 0.5, y: -20 }} // Apple Maps
               >
                 <SymbolKeywordImage item={item} />
               </Marker>
@@ -344,15 +344,16 @@ const Page = () => {
         </MapView>
 
         {isDropdownVisible && (
-        <View style={styles.dropdownContainer}>
-          <Dropdown
-            title="Filter 1"
-            options={['Reuse', 'Recycle', 'Recover', 'Redesign', 'Refill', 'Refurbish', 'Remanufacturing', 'Repair', 'Resell', 'Borrow']}
-            selectedValues={filterValues.option1}
-            onSelect={(values: any) => setFilterValues(prev => ({...prev, option1: values}))}
-          />
-        </View>
-      )}
+          <View style={styles.dropdownContainer}>
+            <Dropdown
+              title="Filter 1"
+              options={['Reuse', 'Recycle', 'Recover', 'Redesign', 'Refill', 'Refurbish', 'Remanufacturing', 'Repair', 'Resell', 'Borrow']}
+              selectedValues={filterValues.option1}
+              onSelect={(values: any) => setFilterValues(prev => ({...prev, option1: values}))}
+            />
+          </View>
+        )}
+
         {
           selectedPlace && (
             <BottomSheet
@@ -365,7 +366,7 @@ const Page = () => {
               index={0}
             >
               <BottomSheetView style={styles.bottomSheetContainer}>
-                 
+                  
                   <Text style={styles.bottomSheetHeader}>{selectedPlace.organization} </Text>
 
                   <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
@@ -383,7 +384,7 @@ const Page = () => {
                   
                     <View style={styles.separator} />
 
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => copyToClipboard(selectedPlace.address)}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => [copyToClipboard(selectedPlace.address), Haptics.impactAsync()]}>
                       <View style={styles.buttonContent}>
                         <Fontisto name="map" size={20} color={Colours.primary} />
                         <Text style={styles.bottomSheetText}>{selectedPlace.address.slice(0, -8).replace(/\s+/g, ' ').trim()}</Text>
@@ -394,7 +395,7 @@ const Page = () => {
 
                     <View style={styles.separator} />
 
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => Linking.openURL(`tel:${selectedPlace.phone_number}`)}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => [Linking.openURL(`tel:${selectedPlace.phone_number}`), Haptics.impactAsync()]}>
                       <View style={styles.buttonContent}>
                         <FontAwesome5 name="phone-alt" size={22} color={Colours.primary} />
                         <Text style={styles.bottomSheetText}>{selectedPlace.phone_number.trimStart()}</Text>
@@ -405,7 +406,7 @@ const Page = () => {
 
                     <View style={styles.separator} />
 
-                    <TouchableOpacity style={styles.buttonContainer} onPress={() => Linking.openURL(selectedPlace.website)}>
+                    <TouchableOpacity style={styles.buttonContainer} onPress={() => [Linking.openURL(selectedPlace.website), Haptics.impactAsync()]}>
                       <View style={styles.buttonContent}>
                         <Ionicons name="globe-outline" size={25} color={Colours.primary} />
                         <Text style={styles.bottomSheetText}>Website</Text>

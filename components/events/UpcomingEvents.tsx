@@ -1,4 +1,4 @@
-import { View, Text, Linking, StyleSheet, TouchableOpacity, Image, Dimensions } from 'react-native';
+import { View, Text, Linking, StyleSheet, TouchableOpacity, Image, Dimensions, FlatList } from 'react-native';
 import React, { useEffect, useState, useCallback } from 'react';
 import eventsData from '@/assets/data/events.json';
 import { FlashList } from '@shopify/flash-list';
@@ -8,6 +8,26 @@ import * as Haptics from 'expo-haptics';
 import { AntDesign } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Link } from 'expo-router';
+import axios from 'axios';
+
+interface Props {
+  refresh: boolean
+}
+
+interface DataItem {
+  id: number,
+  name: string,
+  description: string,
+  organization: string,
+  date: string,
+  duration: number,
+  type: string,
+  location: string,
+  address: string,
+  image: string,
+  url: string,
+  [key: string]: string | number
+}
 
 type ItemId = string | number;
 
@@ -55,31 +75,38 @@ const calculateDaysFromNow = (isoDateString: string): number => {
   currentDate.setHours(0, 0, 0, 0)
 
   const differenceInMs = targetDate.getTime() - currentDate.getTime()
-
   return Math.floor(differenceInMs / (1000 * 60 * 60 * 24))
 }
 
  
-const UpcomingEvents = () => {
+const UpcomingEvents = ({refresh}: Props) => {
   const [loading, setLoading] = useState(false)
   const [savedItems, setSavedItems] = useState<ItemId[]>([])
   const [likedFilter, setLikedFilter] = useState(false);
+  const [data, setData] = useState<DataItem[]>([])
+
+  const fetchDataAndLoadSavedItems = async () => {
+    setLoading(true);
+    try {
+      const [response, savedIds] = await Promise.all([
+        axios.get<DataItem[]>('https://raw.githubusercontent.com/willcagas/wastebuster-public-database/main/public-events.json'),
+        getSavedItemIds()
+      ]);
+
+      setData(response.data);
+      setSavedItems(savedIds);
+    } catch (error) {
+      console.error('Error fetching data or loading saved items:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const loadSavedItems = async () => {
-      setLoading(true)
-      try {
-        const ids = await getSavedItemIds()
-        setSavedItems(ids);
-      } catch (error) {
-        console.error('Error loading saved items:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    fetchDataAndLoadSavedItems();
 
-    loadSavedItems();
-  }, []);
+    console.log('loading')
+  }, [refresh])
 
   const toggleSaved = async (id: ItemId) => {
     savedItems.includes(id)
@@ -135,7 +162,7 @@ const UpcomingEvents = () => {
     </View>
   ), [savedItems, toggleSaved]);
 
-  const sortedEventsData = eventsData
+  const sortedEventsData = data
   .filter(item => item.date && calculateDaysFromNow(item.date) >= 0 && calculateDaysFromNow(item.date) <= 7 && (likedFilter ? savedItems.includes(item.id) : true))
   .sort((a, b) => calculateDaysFromNow(a.date!) - calculateDaysFromNow(b.date!));
 
@@ -163,21 +190,23 @@ const UpcomingEvents = () => {
         </View>
       </View>
       <View style={styles.listContainer}>
-        <FlashList
+        <FlatList
           horizontal
           showsHorizontalScrollIndicator={false}
           data={sortedEventsData}
           renderItem={renderRow}
-          estimatedItemSize={20}
+
           extraData={savedItems}
           ListEmptyComponent={() => (
-            <View style={styles.emptyContainer}>
-              <Image style={{height: '45%', width: '65%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
-  
-              <Text style={{ fontFamily: 'mon-b', fontSize: 17.5, color: Colours.grey}}>
-                Nothing here to show...
-              </Text>
-            </View>
+            loading === false ? (
+              <View style={styles.emptyContainer}>
+                <Image style={{height: '50%', width: '55%'}} source={require('@/assets/images/miscellaneous/empty_image.png')} />
+    
+                <Text style={{ fontFamily: 'mon-b', fontSize: 15, color: Colours.grey}}>
+                  Nothing here to show...
+                </Text>
+              </View>
+            ) : null
           )} 
         />
       </View>
@@ -194,14 +223,14 @@ const styles = StyleSheet.create({
   emptyContainer: {
     flex: 1,
     width: '100%',
-    height: '100%',
-    marginLeft: width / 4,
     alignItems: 'center',
-    justifyContent: 'center',
-    gap: 12.5,
+    height: 265,
+    gap: 10,
+    marginTop: 30,
+    marginLeft: (width / 4) + 10
   },
   listContainer: {
-    flex: 1
+    flex: 1,
   },
   idea: {
     padding: 10,

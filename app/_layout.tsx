@@ -1,7 +1,7 @@
 import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { StatusBar } from 'react-native';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -14,10 +14,15 @@ export default function RootLayout() {
     'mon-b': require('../assets/fonts/Montserrat-Bold.ttf')
   });
 
+  const [isReady, setIsReady] = useState(false);
+
   useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
+    const timer = setTimeout(async () => {
+      await SplashScreen.hideAsync();
+      setIsReady(true);
+    }, 750);
+
+    return () => clearTimeout(timer);
   }, [loaded]);
 
   if (!loaded) {
