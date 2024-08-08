@@ -16,7 +16,7 @@ const About = () => {
     if (expandedGreenVenture) {
       heightGreenVenture.value = withTiming(0, { duration: 300 });
     } else {
-      heightGreenVenture.value = withTiming(162.5, { duration: 300 }); 
+      heightGreenVenture.value = withTiming(150, { duration: 300 }); 
       
       if (expandedWasteBuster) {
         setExpandedWasteBuster(!expandedWasteBuster)
@@ -31,7 +31,7 @@ const About = () => {
     if (expandedWasteBuster) {
       heightWasteBuster.value = withTiming(0, { duration: 300 });
     } else {
-      heightWasteBuster.value = withTiming(275, { duration: 300 }); 
+      heightWasteBuster.value = withTiming(250, { duration: 300 }); 
 
       if (expandedGreenVenture) {
         setExpandedGreenVenture(!expandedGreenVenture)
@@ -66,18 +66,17 @@ const About = () => {
 
           <Animated.View style={[styles.animatedContainer, animatedStyleWasteBuster]}>
             <Text style={[styles.description, {marginTop: 15}]}>
-              Wastebuster was created to address the worsening issue of overconsumption and how our modern economy 
-              often creates and promotes short-lasting, single-use items.
+              WasteBuster's first version was created by coop students Kevin and Afra,
+              with a database created by grade 7-8 students from Spring Valley Elementary School. 
             </Text>
 
             <Text style={styles.description}>
-              It aims to help people in the Hamilton region find circular solutions for 
-              their unwanted items that are accessible and sustainable in 
-              order to create a circular economy.
+              It aims address the worsening issue of overconsumption by helping people in the Hamilton 
+              region find accessible circular solutions for their unwanted items to create a circular economy.
             </Text>
 
             <Text style={styles.description}>
-              Please use it often, and share the message about circular economy and why it matters. 
+              Please use it often and share the message about circular economy and why it matters. 
               We all need to contribute to keep our planet healthy and sustainable. Thank you!
             </Text>
           </Animated.View>
