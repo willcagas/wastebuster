@@ -2,6 +2,12 @@
 
 WasteBuster is an app designed to tackle overconsumption by supporting a circular economy, contributing to a sustainable environment in Hamilton, Ontario.
 
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="https://github.com/user-attachments/assets/c63d9f1f-7556-407e-b208-ad5b056e63d1" alt="01" width="250">
+  <img src="https://github.com/user-attachments/assets/1f27f3ae-e001-4ae8-9e0e-937aaf93a49c" alt="03" width="250">
+  <img src="https://github.com/user-attachments/assets/f1d08803-547f-419f-a15e-208e9c354bae" alt="02" width="250">
+</div>
+
 ## Features
 
 ️🔍 Search for circular solutions
