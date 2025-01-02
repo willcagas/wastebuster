@@ -1,7 +1,7 @@
 # WasteBuster
 
 WasteBuster is an app designed to tackle overconsumption by supporting a circular economy, contributing to a sustainable environment in Hamilton, Ontario. 
-Download on the [App Store](https://apps.apple.com/ca/app/wastebuster/id6450317120).
+Download and install on the [App Store](https://apps.apple.com/ca/app/wastebuster/id6450317120).
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="https://github.com/user-attachments/assets/c63d9f1f-7556-407e-b208-ad5b056e63d1" alt="01" width="250">
