@@ -1,50 +1,21 @@
-# Welcome to your Expo app 👋
+# WasteBuster
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+WasteBuster is an app designed to tackle overconsumption by supporting a circular economy, contributing to a sustainable environment in Hamilton, Ontario.
 
-## Get started
+## Features
 
-1. Install dependencies
+️🔍 Search for circular solutions
 
-   ```bash
-   npm install
-   ```
+Look through 500+ possible circular solutions, a type of waste disposal method that involves reutilizing waste and preventing it from going into landfills. Explore various institutions and organizations in the Hamilton-Wentworth region that resell, repair, or recycle unwanted items sustainably to create a circular economy.
 
-2. Start the app
+💡 Find ideas to redesign items at home
 
-   ```bash
-    npx expo start
-   ```
+Quickly look for DIY at-home redesigning of unused or damaged items. Seek creative ways to breathe new life into old belongings, reducing waste and promoting sustainability within your own home.
 
-In the output, you'll find options to open the app in a
+🌱 Discover sustainable events in Hamilton
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Stay updated on upcoming sustainable events in the Hamilton-Wentworth region. Find workshops, community gatherings, and educational sessions on sustainability and the environment. Participate in these events to learn more about how you can contribute to a greener and more eco-friendly community in Hamilton.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Installation
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Download and install WasteBuster on the [App Store](https://apps.apple.com/ca/app/wastebuster/id6450317120).
