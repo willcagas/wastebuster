@@ -1,6 +1,7 @@
 # WasteBuster
 
-WasteBuster is an app designed to tackle overconsumption by supporting a circular economy, contributing to a sustainable environment in Hamilton, Ontario.
+WasteBuster is an app designed to tackle overconsumption by supporting a circular economy, contributing to a sustainable environment in Hamilton, Ontario. 
+Download and install on the [App Store](https://apps.apple.com/ca/app/wastebuster/id6450317120).
 
 <div style="display: flex; justify-content: center; align-items: center;">
   <img src="https://github.com/user-attachments/assets/c63d9f1f-7556-407e-b208-ad5b056e63d1" alt="01" width="250">
@@ -22,6 +23,3 @@ Quickly look for DIY at-home redesigning of unused or damaged items. Seek creati
 
 Stay updated on upcoming sustainable events in the Hamilton-Wentworth region. Find workshops, community gatherings, and educational sessions on sustainability and the environment. Participate in these events to learn more about how you can contribute to a greener and more eco-friendly community in Hamilton.
 
-## Installation
-
-Download and install WasteBuster on the [App Store](https://apps.apple.com/ca/app/wastebuster/id6450317120).
